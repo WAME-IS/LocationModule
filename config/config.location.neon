@@ -1,0 +1,33 @@
+services:
+	# Entities
+	- Wame\LocationModule\Entities\AddressEntity
+	- Wame\LocationModule\Entities\ContinentEntity
+	- Wame\LocationModule\Entities\ContinentLangEntity
+	- Wame\LocationModule\Entities\StateEntity
+	- Wame\LocationModule\Entities\StateLangEntity
+
+
+	# Repositories
+	- Wame\LocationModule\Repositories\AddressRepository
+	- Wame\LocationModule\Repositories\ContinentRepository
+	- Wame\LocationModule\Repositories\StateRepository
+
+
+	# Events
+	- {class: Wame\LocationModule\Events\UserModuleListener, tags: [run]}
+
+
+	# Factories
+	- Wame\LocationModule\Forms\IAddressFormContainerFactory
+
+
+	# Create user form in administration
+	CreateUserForm:
+		setup:
+			- addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
+
+
+doctrine:
+	metadata:
+		Wame\LocationModule\Entities: %appDir%/../vendor/wame/LocationModule/entities
+		Wame\LocationModule\Repositories: %appDir%/../vendor/wame/LocationModule/repositories
