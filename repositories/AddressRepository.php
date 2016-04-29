@@ -9,6 +9,12 @@ class AddressRepository extends \Wame\Core\Repositories\BaseRepository
 	const STATUS_REMOVE = 0;
 	const STATUS_ACTIVE = 1;
 	
+	
+	public function __construct(\Nette\DI\Container $container, \Kdyby\Doctrine\EntityManager $entityManager, \h4kuna\Gettext\GettextSetup $translator, \Nette\Security\User $user, $entityName = null) {
+		parent::__construct($container, $entityManager, $translator, $user, AddressEntity::class);
+	}
+	
+	
 	public function create($userEntity, $values, $title = null, $main = false)
 	{
 		if (!$title) {
