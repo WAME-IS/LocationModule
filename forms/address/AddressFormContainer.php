@@ -50,7 +50,7 @@ class AddressFormContainer extends BaseFormContainer
 	{
 		$form = $this->getForm();
 		
-		$address = $this->addressRepository->get(['id' => $object->id]);
+		$address = $this->addressRepository->get(['user' => $object->id]);
 
 		if ($address) {
 			$form['street']->setDefaultValue($address->street);

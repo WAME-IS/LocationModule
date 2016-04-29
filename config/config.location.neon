@@ -21,8 +21,18 @@ services:
 	- Wame\LocationModule\Forms\IAddressFormContainerFactory
 
 
+	# Sign up form
+	SignUpForm:
+		setup:
+			- addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
+
 	# Create user form in administration
 	CreateUserForm:
+		setup:
+			- addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
+
+	# Update user form in administration
+	EditUserForm:
 		setup:
 			- addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
 

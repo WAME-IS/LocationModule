@@ -14,27 +14,42 @@ class AddressRepository extends \Wame\Core\Repositories\BaseRepository
 		parent::__construct($container, $entityManager, $translator, $user, AddressEntity::class);
 	}
 	
-	
-	public function create($userEntity, $values, $title = null, $main = false)
+	/**
+	 * Create address
+	 * 
+	 * @param AddressEntity $address
+	 * @return AddressEntity
+	 */
+	public function create($address)
 	{
-		if (!$title) {
-			$title = $values['street'] . ' ' . $values['city'];
-		}
-		
-		$address = new AddressEntity;
-		$address->user = $userEntity;
-		$address->title = $title;
-		$address->street = $values['street'];
-		$address->houseNumber = $values['houseNumber'];
-		$address->zipCode = $values['zipCode'];
-		$address->city = $values['city'];
-		$address->state = null;
-		$address->main = $main;
-		$address->status = self::STATUS_ACTIVE;
-		
 		$this->entityManager->persist($address);
 		
 		return $address;
+	}
+	
+	
+	/**
+	 * Update address
+	 * 
+	 * @param AddressEntity $address
+	 * @return AddressEntity
+	 */
+	public function update($address)
+	{
+		return $address;
+	}
+	
+	
+	/**
+	 * Delete address by criteria
+	 * 
+	 * @param array $criteria
+	 * @param int $status
+	 */
+	public function delete($criteria = [], $status = self::STATUS_REMOVE)
+	{
+		$address = $this->findOneBy($criteria);
+		$address->status = $status;
 	}
 	
 }
