@@ -18,7 +18,7 @@ class UserModuleListener extends Object
 		$this->addressRepository = $addressRepository;
 		
 		$userRepository->onCreate[] = [$this, 'onCreate'];
-		$userRepository->onEdit[] = [$this, 'onEdit'];
+		$userRepository->onUpdate[] = [$this, 'onUpdate'];
 		$userRepository->onDelete[] = [$this, 'onDelete'];
 	}
 
@@ -29,7 +29,7 @@ class UserModuleListener extends Object
 	}
 	
 	
-	public function onEdit()
+	public function onUpdate()
 	{
 		
 	}
