@@ -12,6 +12,7 @@ use \Wame\Core\Entities\Columns;
 class StateEntity extends \Wame\Core\Entities\BaseEntity
 {
 	use Columns\EditDate;
+	use Columns\EditUser;
 	use Columns\Identifier;
 	use Columns\Status;
 	use Columns\Token;
