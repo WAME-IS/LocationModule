@@ -3,7 +3,8 @@
 namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use \Wame\Core\Entities\Columns;
+use Wame\Core\Entities\Columns;
+use Wame\UserModule\Entities\Columns\User;
 
 /**
  * @ORM\Table(name="wame_address")
@@ -14,7 +15,7 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	use Columns\Identifier;
 	use Columns\Status;
 	use Columns\Token;
-	use Columns\User;
+	use User;
 
     /**
      * @ORM\Column(name="title", type="string", length=100, nullable=false)
