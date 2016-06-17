@@ -4,6 +4,7 @@ namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Wame\Core\Entities\Columns;
+use Wame\LocationModule\Entities\Columns\State;
 
 /**
  * @ORM\Table(name="wame_address")
@@ -15,6 +16,7 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	use Columns\Status;
 	use Columns\Token;
 	use Columns\User;
+	use State;
 
     /**
      * @ORM\Column(name="title", type="string", length=100, nullable=false)
@@ -40,12 +42,6 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
      * @ORM\Column(name="city", type="string", length=50, nullable=false)
      */
     protected $city;
-
-    /**
- 	 * @ORM\ManyToOne(targetEntity="StateEntity")
-	 * @ORM\JoinColumn(name="state_id", referencedColumnName="id", nullable=true)
-     */
-    protected $state;
 
     /**
      * @ORM\Column(name="main", type="boolean")

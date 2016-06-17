@@ -3,7 +3,8 @@
 namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use \Wame\Core\Entities\Columns;
+use Nette\Utils\Strings;
+use Wame\Core\Entities\Columns;
 
 /**
  * @ORM\Table(name="wame_continent")
@@ -11,8 +12,6 @@ use \Wame\Core\Entities\Columns;
  */
 class ContinentEntity extends \Wame\Core\Entities\BaseEntity
 {
-	use Columns\EditDate;
-	use Columns\EditUser;
 	use Columns\Identifier;
 	use Columns\Status;
 	use Columns\Token;
@@ -26,5 +25,23 @@ class ContinentEntity extends \Wame\Core\Entities\BaseEntity
      * @ORM\OneToMany(targetEntity="ContinentLangEntity", mappedBy="continent")
      */
     protected $langs;
+
+
+	/** get ************************************************************/
+
+	public function getCode()
+	{
+		return $this->code;
+	}
+
+
+	/** set ************************************************************/
+
+	public function setCode($code)
+	{
+		$this->code = Strings::lower($code);
+		
+		return $this;
+	}
 
 }

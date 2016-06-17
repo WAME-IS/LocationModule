@@ -3,7 +3,9 @@
 namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use \Wame\Core\Entities\Columns;
+use Nette\Utils\Strings;
+use Wame\Core\Entities\Columns;
+use Wame\CurrencyModule\Entities\Columns\Currency;
 
 /**
  * @ORM\Table(name="wame_state")
@@ -11,11 +13,18 @@ use \Wame\Core\Entities\Columns;
  */
 class StateEntity extends \Wame\Core\Entities\BaseEntity
 {
+	use Columns\Identifier;
 	use Columns\EditDate;
 	use Columns\EditUser;
-	use Columns\Identifier;
 	use Columns\Status;
 	use Columns\Token;
+	use Currency;
+
+    /**
+ 	 * @ORM\ManyToOne(targetEntity="ContinentEntity")
+	 * @ORM\JoinColumn(name="continent_id", referencedColumnName="id", nullable=false)
+     */
+    protected $continent;
 
 	/**
      * @ORM\OneToMany(targetEntity="StateLangEntity", mappedBy="state")
@@ -33,7 +42,7 @@ class StateEntity extends \Wame\Core\Entities\BaseEntity
     protected $iso;
 
     /**
-     * @ORM\Column(name="iso_numeric", type="integer", length=3, nullable=false)
+     * @ORM\Column(name="iso_numeric", type="integer", nullable=false)
      */
     protected $isoNumeric;
 
@@ -47,15 +56,82 @@ class StateEntity extends \Wame\Core\Entities\BaseEntity
      */
     protected $tld;
 
-    /**
-     * @ORM\Column(name="flag", type="string", length=10, nullable=false)
-     */
-    protected $flag;
 
-    /**
- 	 * @ORM\ManyToOne(targetEntity="ContinentEntity")
-	 * @ORM\JoinColumn(name="continent_id", referencedColumnName="id", nullable=false)
-     */
-    protected $continent;
+	/** get ************************************************************/
+
+	public function getContinent()
+	{
+		return $this->continent;
+	}
+
+	public function getCode()
+	{
+		return $this->code;
+	}
+
+	public function getIso()
+	{
+		return $this->iso;
+	}
+
+	public function getIsoNumeric()
+	{
+		return $this->isoNumeric;
+	}
+
+	public function getPhonePrefix()
+	{
+		return $this->phonePrefix;
+	}
+
+	public function getTld()
+	{
+		return $this->tld;
+	}
+
+
+	/** set ************************************************************/
+
+	public function setContinent($continent)
+	{
+		$this->continent = $continent;
+		
+		return $this;
+	}
+
+	public function setCode($code)
+	{
+		$this->code = Strings::lower($code);
+		
+		return $this;
+	}
+
+	public function setIso($iso)
+	{
+		$this->iso = Strings::lower($iso);
+		
+		return $this;
+	}
+
+	public function setIsoNumeric($isoNumeric)
+	{
+		$this->isoNumeric = $isoNumeric;
+		
+		return $this;
+	}
+
+	public function setPhonePrefix($phonePrefix)
+	{
+		$this->phonePrefix = $phonePrefix;
+		
+		return $this;
+	}
+
+	public function setTld($tld)
+	{
+		$this->tld = Strings::lower($tld);
+		
+		return $this;
+	}
 
 }

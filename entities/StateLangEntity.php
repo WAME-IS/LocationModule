@@ -3,7 +3,7 @@
 namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use \Wame\Core\Entities\Columns;
+use Wame\Core\Entities\Columns;
 
 /**
  * @ORM\Table(name="wame_state_lang")
@@ -12,6 +12,9 @@ use \Wame\Core\Entities\Columns;
 class StateLangEntity extends \Wame\Core\Entities\BaseEntity
 {
 	use Columns\Identifier;
+	use Columns\Lang;
+	use Columns\Title;
+	use Columns\Slug;
 
 	/**
      * @ORM\ManyToOne(targetEntity="StateEntity", inversedBy="langs")
@@ -19,14 +22,39 @@ class StateLangEntity extends \Wame\Core\Entities\BaseEntity
      */
 	protected $state;
 
-	/**
-     * @ORM\Column(name="title", type="string", length=100, nullable=false)
-     */
-    protected $title;
-
     /**
      * @ORM\Column(name="capital_city", type="string", length=50, nullable=false)
      */
     protected $capitalCity;
+
+
+	/** get ************************************************************/
+
+	public function getState()
+	{
+		return $this->state;
+	}
+
+	public function getCapitalCity()
+	{
+		return $this->capitalCity;
+	}
+
+
+	/** set ************************************************************/
+
+	public function setState($state)
+	{
+		$this->state = $state;
+		
+		return $this;
+	}
+
+	public function setCapitalCity($capitalCity)
+	{
+		$this->capitalCity = $capitalCity;
+		
+		return $this;
+	}
 
 }
