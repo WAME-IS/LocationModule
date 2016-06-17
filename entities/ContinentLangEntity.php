@@ -23,5 +23,21 @@ class ContinentLangEntity extends \Wame\Core\Entities\BaseEntity
      * @ORM\Column(name="title", type="string", length=50, nullable=false)
      */
     protected $title;
+	
+	
+	/** getters ***************************************************************/
+	
+	public function getContinent()
+	{
+		return $this->continent;
+	}
+	
+	
+	/** setters ***************************************************************/
+
+	public function setContinent($continent)
+	{
+		$this->continent = $continent;
+	}
 
 }

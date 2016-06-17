@@ -27,4 +27,20 @@ class ContinentEntity extends \Wame\Core\Entities\BaseEntity
      */
     protected $langs;
 
+	
+	/** getters ***************************************************************/
+	
+	public function getCode()
+	{
+		return $this->code;
+	}
+	
+	
+	/** setters ***************************************************************/
+
+	public function setCode($code)
+	{
+		$this->code = $code;
+	}
+	
 }

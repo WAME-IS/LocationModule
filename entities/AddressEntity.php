@@ -15,11 +15,7 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	use Columns\Status;
 	use Columns\Token;
 	use Columns\User;
-
-    /**
-     * @ORM\Column(name="title", type="string", length=100, nullable=false)
-     */
-    protected $title;
+	use Columns\Title;
 
     /**
      * @ORM\Column(name="street", type="string", length=150, nullable=false)
@@ -51,5 +47,71 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
      * @ORM\Column(name="main", type="boolean")
      */
     protected $main = false;
-
+	
+	
+	/** getters ***************************************************************/
+	
+	public function getStreet()
+	{
+		return $this->street;
+	}
+	
+	public function getHouseNumber()
+	{
+		return $this->houseNumber;
+	}
+	
+	public function getZipCode()
+	{
+		return $this->zipCode;
+	}
+	
+	public function getCity()
+	{
+		return $this->city;
+	}
+	
+	public function getState()
+	{
+		return $this->state;
+	}
+	
+	public function getMain()
+	{
+		return $this->main;
+	}
+	
+	
+	/** setters ***************************************************************/
+	
+	public function setStreet($street)
+	{
+		$this->street = $street;
+	}
+	
+	public function setHouseNumber($houseNumber)
+	{
+		$this->houseNumber = $houseNumber;
+	}
+	
+	public function setZipCode($zipCode)
+	{
+		$this->zipCode = $zipCode;
+	}
+	
+	public function setCity($city)
+	{
+		$this->city = $city;
+	}
+	
+	public function setState($state)
+	{
+		$this->state = $state;
+	}
+	
+	public function setMain($main)
+	{
+		$this->main = $main;
+	}
+	
 }
