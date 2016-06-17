@@ -38,7 +38,7 @@ class ContinentLangEntity extends \Wame\Core\Entities\BaseEntity
 	public function setContinent($continent)
 	{
 		$this->continent = $continent;
-		
+
 		return $this;
 	}
 

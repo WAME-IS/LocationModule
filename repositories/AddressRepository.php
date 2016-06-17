@@ -52,4 +52,22 @@ class AddressRepository extends \Wame\Core\Repositories\BaseRepository
 		$address->status = $status;
 	}
 	
+	/**
+	 * Fill
+	 * 
+	 * @param array $values		values
+	 * @return AddressEntity	address entity
+	 */
+	public function fill($values)
+	{
+		$addressEntity = new AddressEntity();
+		$addressEntity->setUser($this->yourUserEntity);
+		$addressEntity->setStreet($values['street']);
+		$addressEntity->setHouseNumber($values['houseNumber']);
+		$addressEntity->setZipCode($values['zipCode']);
+		$addressEntity->setCity($values['city']);
+		
+		return $this->create($addressEntity);
+	}
+	
 }

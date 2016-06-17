@@ -134,4 +134,80 @@ class StateEntity extends \Wame\Core\Entities\BaseEntity
 		return $this;
 	}
 
+	
+	/** getters ***************************************************************/
+	
+	public function getCode()
+	{
+		return $this->code;
+	}
+	
+	public function getIso()
+	{
+		return $this->iso;
+	}
+	
+	public function getIsoNumeric()
+	{
+		return $this->isoNumeric;
+	}
+	
+	public function getPhonePrefix()
+	{
+		return $this->phonePrefix;
+	}
+	
+	public function getTld()
+	{
+		return $this->tld;
+	}
+	
+	public function getFlag()
+	{
+		return $this->flag;
+	}
+	
+	public function getContinent()
+	{
+		return $this->continent;
+	}
+	
+	
+	/** setters ***************************************************************/
+
+	public function setCode($code)
+	{
+		$this->code = $code;
+	}
+	
+	public function setIso($iso)
+	{
+		$this->iso = $iso;
+	}
+	
+	public function setIsoNumeric($isoNumeric)
+	{
+		$this->isoNumeric = $isoNumeric;
+	}
+	
+	public function setphonePrefix($phonePrefix)
+	{
+		$this->phonePrefix = $phonePrefix;
+	}
+	
+	public function setTld($tld)
+	{
+		$this->tld = $tld;
+	}
+	
+	public function setFlag($flag)
+	{
+		$this->flag = $flag;
+	}
+	
+	public function setContinent($continent)
+	{
+		$this->continent = $continent;
+	}
+	
 }
