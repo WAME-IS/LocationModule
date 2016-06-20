@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		{_'Continents'}
+	</div>
+
+	<div n:if="count($continents) == 0" class="panel-body text-center">
+		<div class="lead text-muted">{_'Not created any continents.'}</div>
+	</div>
+
+	<table n:if="count($continents) > 0" class="table table-striped">
+		<tbody>
+			<tr n:foreach="$continents as $continent">
+				<td>
+					<strong>{$continent->code|upper}</strong>
+				</td>
+
+				<td>
+					{$continent->langs[$lang]->title}
+				</td>
+
+				<td class="text-right">
+					<a class="btn btn-warning btn-sm" href="{plink :Admin:Continent:edit, 'id' => $continent->id}">
+						<span class="fa fa-edit"></span>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -40,4 +40,3 @@ services:
 doctrine:
 	metadata:
 		Wame\LocationModule\Entities: %appDir%/../vendor/wame/LocationModule/entities
-		Wame\LocationModule\Repositories: %appDir%/../vendor/wame/LocationModule/repositories

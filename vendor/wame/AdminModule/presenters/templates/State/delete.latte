@@ -1,0 +1,15 @@
+{block content}
+	<div class="page-header">
+		<h1>
+			{$siteTitle}
+			<small>
+				<span class="fa fa-angle-right"></span>
+				{$stateEntity->langs[$lang]->title}
+			</small>
+		</h1>
+	</div>
+	
+	<p>{_'Do you really want to delete this state?'}</p>
+	
+	<a class="btn btn-danger" n:href="Delete!">{_'Delete'}</a>
+	<a class="btn btn-default" n:href=":Admin:Settings:, 'id' => 'State'">{_'Cancel'}</a>

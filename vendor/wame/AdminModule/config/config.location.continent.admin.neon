@@ -1,0 +1,14 @@
+services:
+	PermissionObject:
+		setup:
+			- addResource('admin.continent')
+			- addResourceAction('admin.continent', 'view')
+			- allow('moderator', 'admin.continent', 'view')
+			- addResourceAction('admin.continent', 'edit')
+			- allow('moderator', 'admin.continent', 'edit')
+
+
+	ContinentForm:
+		class: Wame\LocationModule\Vendor\Wame\AdminModule\Forms\ContinentForm
+		setup:
+			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\Continent\TitleFormContainer(), 'TitleFormContainer')

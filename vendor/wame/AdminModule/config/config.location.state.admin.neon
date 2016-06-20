@@ -1,0 +1,25 @@
+services:
+	PermissionObject:
+		setup:
+			- addResource('admin.state')
+			- addResourceAction('admin.state', 'view')
+			- allow('moderator', 'admin.state', 'view')
+			- addResourceAction('admin.state', 'create')
+			- allow('moderator', 'admin.state', 'create')
+			- addResourceAction('admin.state', 'edit')
+			- allow('moderator', 'admin.state', 'edit')
+			- addResourceAction('admin.state', 'delete')
+			- allow('admin', 'admin.state', 'delete')
+
+
+	StateForm:
+		class: Wame\LocationModule\Vendor\Wame\AdminModule\Forms\StateForm
+		setup:
+			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\ContinentFormContainer(), 'ContinentFormContainer')
+			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\TitleFormContainer(), 'TitleFormContainer')
+			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\CodeFormContainer(), 'CodeFormContainer')
+			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\IsoFormContainer(), 'IsoFormContainer')
+			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\IsoNumericFormContainer(), 'IsoNumericFormContainer')
+			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\PhonePrefixFormContainer(), 'PhonePrefixFormContainer')
+			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\TldFormContainer(), 'TldFormContainer')
+			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\CapitalCityFormContainer(), 'CapitalCityFormContainer')

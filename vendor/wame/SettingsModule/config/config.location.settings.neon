@@ -1,0 +1,21 @@
+services:
+	- Wame\LocationModule\Vendor\Wame\SettingsModule\Components\IContinentListControlFactory
+	- Wame\LocationModule\Vendor\Wame\SettingsModule\Components\IStateListControlFactory
+
+
+	StateListForm:
+		class: Wame\LocationModule\Vendor\Wame\SettingsModule\Forms\StateListForm
+
+
+	ContinentSettings:
+		class: Wame\LocationModule\Vendor\Wame\SettingsModule\Models\Continent
+
+
+	StateSettings:
+		class: Wame\LocationModule\Vendor\Wame\SettingsModule\Models\State
+
+
+	SettingsManager:
+		setup:
+			- addType(@ContinentSettings, 'Continent')
+			- addType(@StateSettings, 'State')
