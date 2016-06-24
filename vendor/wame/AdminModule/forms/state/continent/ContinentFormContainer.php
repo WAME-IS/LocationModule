@@ -23,8 +23,8 @@ class ContinentFormContainer extends BaseFormContainer
 	
 	/** @var array */
 	private $continentList;
-	
-	
+
+
 	public function __construct(
 		ContinentRepository $continentRepository
 	) {
@@ -35,8 +35,8 @@ class ContinentFormContainer extends BaseFormContainer
 
 		$this->continentList = $this->getContinents();
 	}
-	
-	
+
+
 	private function getContinents()
 	{
 		$return = [];
@@ -49,15 +49,8 @@ class ContinentFormContainer extends BaseFormContainer
 		
 		return $return;
 	}
-	
-	
-    public function render() 
-	{
-        $this->template->_form = $this->getForm();
-        $this->template->render(__DIR__ . '/default.latte');
-    }
 
-	
+
     public function configure() 
 	{
 		$form = $this->getForm();
@@ -66,8 +59,8 @@ class ContinentFormContainer extends BaseFormContainer
 				->setPrompt('- ' . _('Select continent') . ' -')
 				->setRequired(_('Please select continent'));
     }
-	
-	
+
+
 	public function setDefaultValues($stateForm)
 	{
 		$form = $this->getForm();

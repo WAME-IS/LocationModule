@@ -15,13 +15,6 @@ interface ICodeFormContainerFactory
 
 class CodeFormContainer extends BaseFormContainer
 {
-    public function render() 
-	{
-        $this->template->_form = $this->getForm();
-        $this->template->render(__DIR__ . '/default.latte');
-    }
-
-	
     public function configure() 
 	{
 		$form = $this->getForm();
@@ -30,8 +23,8 @@ class CodeFormContainer extends BaseFormContainer
 				->setRequired(_('Please enter code'))
 				->addRule(Form::LENGTH, _('Must be %d characters'), 2);
     }
-	
-	
+
+
 	public function setDefaultValues($stateForm)
 	{
 		$form = $this->getForm();

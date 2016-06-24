@@ -15,13 +15,6 @@ interface IIsoNumericFormContainerFactory
 
 class IsoNumericFormContainer extends BaseFormContainer
 {
-    public function render() 
-	{
-        $this->template->_form = $this->getForm();
-        $this->template->render(__DIR__ . '/default.latte');
-    }
-
-	
     public function configure() 
 	{
 		$form = $this->getForm();
@@ -29,8 +22,8 @@ class IsoNumericFormContainer extends BaseFormContainer
 		$form->addText('isoNumeric', _('ISO numeric code'))
 				->addRule(Form::INTEGER, _('Must be a number'), '.*[0-9].*');
     }
-	
-	
+
+
 	public function setDefaultValues($stateForm)
 	{
 		$form = $this->getForm();

@@ -5,13 +5,19 @@ namespace Wame\LocationModule\Events;
 use Nette\Object;
 use Wame\LocationModule\Entities\AddressEntity;
 use Wame\LocationModule\Repositories\AddressRepository;
+use Wame\LocationModule\Repositories\StateRepository;
 use Wame\UserModule\Repositories\UserRepository;
+
 
 class UserModuleListener extends Object 
 {
 	/** @var AddressRepository */
 	private $addressRepository;
 	
+	/** @var StateRepository */
+	private $stateRepository;
+
+
 	public function __construct(
 		AddressRepository $addressRepository,
 		UserRepository $userRepository
@@ -23,43 +29,44 @@ class UserModuleListener extends Object
 		$userRepository->onDelete[] = [$this, 'onDelete'];
 	}
 
-	
+
 	public function onCreate($form, $values, $userEntity) 
 	{
 		if ($values['street'] || $values['houseNumber'] || $values['zipCode'] || $values['city']) {
+			$stateEntity = $this->stateRepository->get(['id' => $values['state']]);
+
 			$address = new AddressEntity;
-			$address->user = $userEntity;
-			$address->title = $values['street'] . ' ' . $values['city'];
-			$address->street = $values['street'];
-			$address->houseNumber = $values['houseNumber'];
-			$address->zipCode = $values['zipCode'];
-			$address->city = $values['city'];
-			$address->state = null;
-			$address->main = 1;
-			$address->status = AddressRepository::STATUS_ACTIVE;
+			$address->setUser($userEntity);
+			$address->setTitle($values['street'] . ' ' . $values['city']);
+			$address->setStreet($values['street']);
+			$address->setHouseNumber($values['houseNumber']);
+			$address->setZipCode($values['zipCode']);
+			$address->setCity($values['city']);
+			$address->setState($stateEntity);
+			$address->setMain(1);
+			$address->setStatus(AddressRepository::STATUS_ACTIVE);
 			
-			$return = $this->addressRepository->create($address);
-		} else {
-			$return = $this;
+			$this->addressRepository->create($address);
 		}
-		
-		return $return;
 	}
-	
-	
+
+
 	public function onUpdate($form, $values, $userEntity)
 	{
 		$address = $this->addressRepository->get(['user' => $userEntity->id]);
+		$stateEntity = $this->stateRepository->get(['id' => $values['state']]);
 		
-		$address->street = $values['street'];
-		$address->houseNumber = $values['houseNumber'];
-		$address->zipCode = $values['zipCode'];
-		$address->city = $values['city'];
+		$address->setTitle($values['street'] . ' ' . $values['city']);
+		$address->setStreet($values['street']);
+		$address->setHouseNumber($values['houseNumber']);
+		$address->setZipCode($values['zipCode']);
+		$address->setCity($values['city']);
+		$address->setState($stateEntity);
 		
-		return $this->addressRepository->update($address);
+		$this->addressRepository->update($address);
 	}
-	
-	
+
+
 	public function onDelete($userId)
 	{
 		$this->addressRepository->delete(['user' => $userId]);

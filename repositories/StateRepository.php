@@ -67,4 +67,24 @@ class StateRepository extends \Wame\Core\Repositories\BaseRepository
 		$entity->status = $status;
 	}
 	
+	
+	/**
+	 * Return list of states in actual language
+	 * 
+	 * @param array $criteria
+	 * @return array
+	 */
+	public function getStateList($criteria = [])
+	{
+		$return = [];
+		
+		$states = $this->find($criteria);
+		
+		foreach ($states as $state) {
+			$return[$state->getId()] = $state->langs[$this->lang]->getTitle();
+		}
+		
+		return $return;
+	}
+	
 }

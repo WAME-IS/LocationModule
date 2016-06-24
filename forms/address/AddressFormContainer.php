@@ -4,6 +4,8 @@ namespace Wame\LocationModule\Forms;
 
 use Wame\DynamicObject\Forms\BaseFormContainer;
 use Wame\LocationModule\Repositories\AddressRepository;
+use Wame\LocationModule\Repositories\StateRepository;
+
 
 interface IAddressFormContainerFactory
 {
@@ -16,20 +18,22 @@ class AddressFormContainer extends BaseFormContainer
 {
 	/** @var AddressRepository */
 	private $addressRepository;
-	
-	public function __construct(AddressRepository $addressRepository) {
+
+	/** @var array */
+	private $stateList;
+
+
+	public function __construct(
+		AddressRepository $addressRepository,
+		StateRepository $stateRepository
+	) {
 		parent::__construct();
 		
 		$this->addressRepository = $addressRepository;
+		$this->stateList = $stateRepository->getStateList(['status' => StateRepository::STATUS_ENABLED]);
 	}
-	
-    public function render() 
-	{
-        $this->template->_form = $this->getForm();
-        $this->template->render(__DIR__ . '/default.latte');
-    }
 
-	
+
     protected function configure() 
 	{		
 		$form = $this->getForm();
@@ -43,9 +47,11 @@ class AddressFormContainer extends BaseFormContainer
         $form->addText('zipCode', _('Zip code'));
 		
         $form->addText('city', _('City'));
+		
+        $form->addSelect('state', _('State'), $this->stateList);
     }
-	
-	
+
+
 	public function setDefaultValues($object)
 	{
 		$form = $this->getForm();
@@ -57,7 +63,8 @@ class AddressFormContainer extends BaseFormContainer
 			$form['houseNumber']->setDefaultValue($address->houseNumber);
 			$form['zipCode']->setDefaultValue($address->zipCode);
 			$form['city']->setDefaultValue($address->city);
+			$form['state']->setDefaultValue($address->state->getId());
 		}
 	}
-	
+
 }

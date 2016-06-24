@@ -14,21 +14,14 @@ interface IPhonePrefixFormContainerFactory
 
 class PhonePrefixFormContainer extends BaseFormContainer
 {
-    public function render() 
-	{
-        $this->template->_form = $this->getForm();
-        $this->template->render(__DIR__ . '/default.latte');
-    }
-
-	
     public function configure() 
 	{
 		$form = $this->getForm();
 
 		$form->addText('phonePrefix', _('Phone prefix'));
     }
-	
-	
+
+
 	public function setDefaultValues($stateForm)
 	{
 		$form = $this->getForm();

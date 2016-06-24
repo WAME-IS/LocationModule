@@ -14,13 +14,6 @@ interface ITitleFormContainerFactory
 
 class TitleFormContainer extends BaseFormContainer
 {
-    public function render() 
-	{
-        $this->template->_form = $this->getForm();
-        $this->template->render(__DIR__ . '/default.latte');
-    }
-
-	
     public function configure() 
 	{
 		$form = $this->getForm();
@@ -28,8 +21,8 @@ class TitleFormContainer extends BaseFormContainer
 		$form->addText('title', _('Title'))
 				->setRequired(_('Please enter title'));
     }
-	
-	
+
+
 	public function setDefaultValues($stateForm)
 	{
 		$form = $this->getForm();
