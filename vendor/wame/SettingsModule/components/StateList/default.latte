@@ -5,7 +5,7 @@
 		<div class="panel-heading">
 			{_'States'}
 			
-			<a n:if="count($states) > 0" class="btn btn-success btn-xs pull-right" href="{plink :Admin:State:create, 'id' => null}">
+			<a n:if="count($states) > 0" class="btn btn-success btn-xs pull-right ajax-modal" href="{plink :Admin:State:create, 'id' => null}">
 				<span class="fa fa-plus"></span>
 				{_'Add state'}
 			</a>
@@ -57,10 +57,10 @@
 						</td>
 
 						<td class="text-right">
-							<a class="btn btn-warning btn-sm" href="{plink :Admin:State:edit, 'id' => $state->id}">
+							<a class="btn btn-warning btn-sm ajax-modal" href="{plink :Admin:State:edit, 'id' => $state->id}">
 								<span class="fa fa-edit"></span>
 							</a>
-							<a class="btn btn-danger btn-sm" href="{plink :Admin:State:delete, 'id' => $state->id}">
+							<a class="btn btn-danger btn-sm ajax-modal" href="{plink :Admin:State:delete, 'id' => $state->id}">
 								<span class="fa fa-trash-o"></span>
 							</a>
 						</td>
