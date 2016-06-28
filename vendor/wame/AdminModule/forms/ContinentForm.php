@@ -104,7 +104,7 @@ class ContinentForm extends FormFactory
 		$continentLangEntity = $this->continentEntity->langs[$this->lang];
 		$continentLangEntity->setTitle($values['title']);
 		$continentLangEntity->setSlug(Strings::webalize($values['title']));
-		$continentLangEntity->setEditDate($this->formatDate('now'));
+		$continentLangEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));
 		$continentLangEntity->setEditUser($userEntity);
 		
 		return $this->continentRepository->update($this->continentEntity);

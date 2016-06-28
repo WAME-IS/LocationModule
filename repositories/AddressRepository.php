@@ -61,7 +61,7 @@ class AddressRepository extends \Wame\Core\Repositories\BaseRepository
 	public function fill($values)
 	{
 		$addressEntity = new AddressEntity();
-		$addressEntity->setUser($this->yourUserEntity);
+		$addressEntity->setUser($this->user->getEntity());
 		$addressEntity->setStreet($values['street']);
 		$addressEntity->setHouseNumber($values['houseNumber']);
 		$addressEntity->setZipCode($values['zipCode']);

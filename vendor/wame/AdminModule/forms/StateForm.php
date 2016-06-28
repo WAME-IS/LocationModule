@@ -136,7 +136,7 @@ class StateForm extends FormFactory
 		$stateEntity->setPhonePrefix($values['phonePrefix']);
 		$stateEntity->setTld($values['tld']);
 		$stateEntity->setToken(md5(time()));
-		$stateEntity->setEditDate($this->formatDate('now'));
+		$stateEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));
 		$stateEntity->setEditUser($this->userEntity);
 		$stateEntity->setStatus(StateRepository::STATUS_ENABLED);
 		
@@ -168,7 +168,7 @@ class StateForm extends FormFactory
 		$stateEntity->setIsoNumeric($values['isoNumeric']);
 		$stateEntity->setPhonePrefix($values['phonePrefix']);
 		$stateEntity->setTld($values['tld']);
-		$stateEntity->setEditDate($this->formatDate('now'));
+		$stateEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));
 		$stateEntity->setEditUser($this->userEntity);
 				
 		$stateLangEntity = $this->stateEntity->langs[$this->lang];
