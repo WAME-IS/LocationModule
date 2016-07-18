@@ -20,22 +20,22 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	use State;
 
     /**
-     * @ORM\Column(name="street", type="string", length=150, nullable=false)
+     * @ORM\Column(name="street", type="string", length=150, nullable=true)
      */
     protected $street;
 
     /**
-     * @ORM\Column(name="house_number", type="string", length=30, nullable=false)
+     * @ORM\Column(name="house_number", type="string", length=30, nullable=true)
      */
     protected $houseNumber;
 
     /**
-     * @ORM\Column(name="zip_code", type="string", length=10, nullable=false)
+     * @ORM\Column(name="zip_code", type="string", length=10, nullable=true)
      */
     protected $zipCode;
 
     /**
-     * @ORM\Column(name="city", type="string", length=50, nullable=false)
+     * @ORM\Column(name="city", type="string", length=50, nullable=true)
      */
     protected $city;
 
