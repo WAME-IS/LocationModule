@@ -4,6 +4,7 @@ namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Wame\Core\Entities\Columns;
+use Wame\LocationModule\Entities\Columns\City;
 use Wame\LocationModule\Entities\Columns\State;
 
 /**
@@ -17,6 +18,7 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	use Columns\Title;
 	use Columns\Token;
 	use Columns\User;
+	use City;
 	use State;
 
     /**
@@ -30,22 +32,12 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
     protected $houseNumber;
 
     /**
-     * @ORM\Column(name="zip_code", type="string", length=10, nullable=true)
-     */
-    protected $zipCode;
-
-    /**
-     * @ORM\Column(name="city", type="string", length=50, nullable=true)
-     */
-    protected $city;
-
-    /**
      * @ORM\Column(name="main", type="boolean")
      */
     protected $main = false;
 	
 	
-	/** getters ***************************************************************/
+	/** get ***************************************************************/
 	
 	public function getStreet()
 	{
@@ -57,23 +49,13 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 		return $this->houseNumber;
 	}
 	
-	public function getZipCode()
-	{
-		return $this->zipCode;
-	}
-	
-	public function getCity()
-	{
-		return $this->city;
-	}
-	
 	public function getMain()
 	{
 		return $this->main;
 	}
 	
 	
-	/** setters ***************************************************************/
+	/** set ***************************************************************/
 	
 	public function setStreet($street)
 	{
@@ -83,16 +65,6 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	public function setHouseNumber($houseNumber)
 	{
 		$this->houseNumber = $houseNumber;
-	}
-	
-	public function setZipCode($zipCode)
-	{
-		$this->zipCode = $zipCode;
-	}
-	
-	public function setCity($city)
-	{
-		$this->city = $city;
 	}
 	
 	public function setMain($main)

@@ -1,15 +1,9 @@
 services:
-	# Entities
-	- Wame\LocationModule\Entities\AddressEntity
-	- Wame\LocationModule\Entities\ContinentEntity
-	- Wame\LocationModule\Entities\ContinentLangEntity
-	- Wame\LocationModule\Entities\StateEntity
-	- Wame\LocationModule\Entities\StateLangEntity
-
-
 	# Repositories
 	- Wame\LocationModule\Repositories\AddressRepository
+	- Wame\LocationModule\Repositories\CityRepository
 	- Wame\LocationModule\Repositories\ContinentRepository
+	- Wame\LocationModule\Repositories\RegionRepository
 	- Wame\LocationModule\Repositories\StateRepository
 
 
