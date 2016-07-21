@@ -6,7 +6,7 @@ namespace Wame\LocationModule\Entities\Columns;
 trait Longitude
 {
     /**
-     * @ORM\Column(name="longitude", type="decimal", precision=15, scale=15)
+     * @ORM\Column(name="longitude", type="float", precision=10, scale=6)
      */
     protected $longitude;
 
