@@ -5,6 +5,7 @@ namespace Wame\LocationModule\Repositories;
 use h4kuna\Gettext\GettextSetup;
 use Kdyby\Doctrine\EntityManager;
 use Nette\DI\Container;
+use Nette\Utils\Strings;
 use Nette\Security\User;
 use Wame\Core\Exception\RepositoryException;
 use Wame\Core\Repositories\TranslatableRepository;
@@ -75,44 +76,97 @@ class CityRepository extends TranslatableRepository
     }
     
     
-    public function createIfNotExists($criteria = [])
+    /**
+     * Create or update city
+     * 
+     * @param array $values
+     * @return CityEntity
+     */
+    public function createIfNotExists($values = [])
     {
-        $cityEntity = $this->get($criteria);
+        $cityEntity = $this->get(['importId' => $values['importId']]);
         
         if ($cityEntity) {
-            return $cityEntity;
+            return $this->updateCity($cityEntity, $values);
+        } else {
+            return $this->createCity($values);
+        }
+    }
+    
+    /**
+     * Create city
+     * 
+     * @param array $values
+     * @return CityEntity
+     */
+    public function createCity($values)
+    {
+        $cityEntity = new CityEntity();
+        $cityEntity->setImportId($values['importId']);
+        $cityEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));
+        $cityEntity->setEditUser($this->user->getEntity());
+        $cityEntity->setStatus(self::STATUS_ENABLED);
+        $cityEntity->setToken(time());
+        
+        if (isset($values['latitude'])) {
+            $cityEntity->setLatitude($values['latitude']);
         }
         
-        $newCityEntity = new CityEntity();
-        $newCityEntity->setImportId($criteria['importId']);
-        $newCityEntity->setLatitude($criteria['latitude']);
-        $newCityEntity->setLongitude($criteria['longitude']);
-        $newCityEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));
-        $newCityEntity->setEditUser($this->user->getEntity());
-        $newCityEntity->setStatus(self::STATUS_ENABLED);
-        $newCityEntity->setToken(time());
-        
-        if (isset($criteria['zipCode'])) {
-            $newCityEntity->setZipCode($criteria['zipCode']);
+        if (isset($values['longitude'])) {
+            $cityEntity->setLongitude($values['longitude']);
         }
         
-        if (isset($criteria['region'])) {
-            $newCityEntity->setRegion($criteria['region']);
+        if (isset($values['zipCode'])) {
+            $cityEntity->setZipCode($values['zipCode']);
         }
         
-        if (isset($criteria['state'])) {
-            $newCityEntity->setState($criteria['state']);
+        if (isset($values['region'])) {
+            $cityEntity->setRegion($values['region']);
+        }
+        
+        if (isset($values['state'])) {
+            $cityEntity->setState($values['state']);
         }
 
-        $newCityLangEntity = new CityLangEntity();
-        $newCityLangEntity->setLang($this->lang);
-        $newCityLangEntity->setCity($newCityEntity);
-        $newCityLangEntity->setTitle($criteria['title']);
-        $newCityLangEntity->setSlug(\Nette\Utils\Strings::webalize($criteria['title']));
+        $cityLangEntity = new CityLangEntity();
+        $cityLangEntity->setLang($this->lang);
+        $cityLangEntity->setCity($cityEntity);
+        $cityLangEntity->setTitle($values['title']);
+        $cityLangEntity->setSlug(Strings::webalize($values['title']));
         
-        $newCityEntity->addLang($this->lang, $newCityLangEntity);
+        $cityEntity->addLang($this->lang, $cityLangEntity);
 
-        return $this->create($newCityEntity);
+        return $this->create($cityEntity);
+    }
+    
+    
+    /**
+     * Update city
+     * 
+     * @param CityEntity $cityEntity
+     * @param array $values
+     * @return CityEntity
+     */
+    public function updateCity($cityEntity, $values)
+    {
+        if (isset($values['latitude'])) {
+            $cityEntity->setLatitude($values['latitude']);
+        }
+
+        if (isset($values['longitude'])) {
+            $cityEntity->setLongitude($values['longitude']);
+        }
+
+        if (isset($values['zipCode'])) {
+            $cityEntity->setZipCode($values['zipCode']);
+        }
+        
+        $cityEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));     
+        $cityEntity->setEditUser($this->user->getEntity());
+        $cityEntity->langs[$this->lang]->setTitle($values['title']);
+        $cityEntity->langs[$this->lang]->setSlug(Strings::webalize($values['title']));
+        
+        return $this->update($cityEntity);
     }
 
 }

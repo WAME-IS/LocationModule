@@ -91,7 +91,6 @@ class AddressRepository extends BaseRepository
 		$addressEntity->setUser($this->user->getEntity());
 		$addressEntity->setStreet($values['street']);
 		$addressEntity->setHouseNumber($values['houseNumber']);
-		$addressEntity->setZipCode($values['zipCode']);
 		$addressEntity->setCity($values['city']);
 		
 		return $this->create($addressEntity);
@@ -115,10 +114,6 @@ class AddressRepository extends BaseRepository
         
         if (isset($address['street_number'])) {
             $addressEntity->setHouseNumber($address['street_number']);
-        }
-        
-        if (isset($address['postal_code'])) {
-            $addressEntity->setZipCode($address['postal_code']);
         }
         
         if (isset($address['country'])) {
@@ -148,7 +143,7 @@ class AddressRepository extends BaseRepository
                 $title .= ' - ' . $address['sublocality_level_1'];
             }
             
-            $criteria = [
+            $values = [
                 'title' => $title, 
                 'latitude' => $address['latitude'], 
                 'longitude' => $address['longitude'],
@@ -156,18 +151,18 @@ class AddressRepository extends BaseRepository
             ];
             
             if (isset($address['postal_code'])) {
-                $criteria['zipCode'] = $address['postal_code'];
+                $values['zipCode'] = $address['postal_code'];
             }
             
             if (isset($regionEntity)) {
-                $criteria['region'] = $regionEntity;
+                $values['region'] = $regionEntity;
             }
             
             if (isset($stateEntity)) {
-                $criteria['state'] = $stateEntity;
+                $values['state'] = $stateEntity;
             }
             
-            $cityEntity = $this->cityRepository->createIfNotExists($criteria);
+            $cityEntity = $this->cityRepository->createIfNotExists($values);
             
             $addressEntity->setCity($cityEntity);
         }
