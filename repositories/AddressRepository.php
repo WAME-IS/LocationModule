@@ -107,6 +107,7 @@ class AddressRepository extends BaseRepository
     {
         $addressEntity = new AddressEntity();
 		$addressEntity->setUser($this->user->getEntity());
+		$addressEntity->setStatus(self::STATUS_ACTIVE);
         
         if (isset($address['route'])) {
             $addressEntity->setStreet($address['route']);

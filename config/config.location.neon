@@ -12,6 +12,8 @@ services:
 
 
 	# Factories
+	- Wame\LocationModule\Components\IAddressControlFactory
+	- Wame\LocationModule\Forms\AddressComponentForm
 	- Wame\LocationModule\Forms\IAddressFormContainerFactory
 
 
