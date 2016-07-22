@@ -20,9 +20,11 @@ class UserModuleListener extends Object
 
 	public function __construct(
 		AddressRepository $addressRepository,
+		StateRepository $stateRepository,
 		UserRepository $userRepository
 	) {
 		$this->addressRepository = $addressRepository;
+		$this->stateRepository = $stateRepository;
 		
 		$userRepository->onCreate[] = [$this, 'onCreate'];
 		$userRepository->onUpdate[] = [$this, 'onUpdate'];
@@ -32,38 +34,46 @@ class UserModuleListener extends Object
 
 	public function onCreate($form, $values, $userEntity) 
 	{
-		if ($values['street'] || $values['houseNumber'] || $values['zipCode'] || $values['city']) {
-			$stateEntity = $this->stateRepository->get(['id' => $values['state']]);
-
-			$address = new AddressEntity;
-			$address->setUser($userEntity);
-			$address->setTitle($values['street'] . ' ' . $values['city']);
-			$address->setStreet($values['street']);
-			$address->setHouseNumber($values['houseNumber']);
-			$address->setZipCode($values['zipCode']);
-			$address->setCity($values['city']);
-			$address->setState($stateEntity);
-			$address->setMain(1);
-			$address->setStatus(AddressRepository::STATUS_ACTIVE);
+//		if ($values['street'] || $values['houseNumber'] || $values['zipCode'] || $values['city']) {
+//			$stateEntity = $this->stateRepository->get(['id' => $values['state']]);
+//
+//			$address = new AddressEntity;
+//			$address->setUser($userEntity);
+//			$address->setTitle($values['street'] . ' ' . $values['city']);
+//			$address->setStreet($values['street']);
+//			$address->setHouseNumber($values['houseNumber']);
+//			$address->setZipCode($values['zipCode']);
+//			$address->setCity($values['city']);
+//			$address->setState($stateEntity);
+//			$address->setMain(1);
+//			$address->setStatus(AddressRepository::STATUS_ACTIVE);
+//			
+//			$this->addressRepository->create($address);
+//		}
+        
+        $address = new AddressEntity();
+        $address->setUser($userEntity);
+        $address->setTitle($userEntity->getNick() . ' ' . _('address'));
+        $address->setMain(1);
+		$address->setStatus(AddressRepository::STATUS_ACTIVE);
 			
-			$this->addressRepository->create($address);
-		}
+        $this->addressRepository->create($address);
 	}
 
 
 	public function onUpdate($form, $values, $userEntity)
 	{
-		$address = $this->addressRepository->get(['user' => $userEntity->id]);
-		$stateEntity = $this->stateRepository->get(['id' => $values['state']]);
-		
-		$address->setTitle($values['street'] . ' ' . $values['city']);
-		$address->setStreet($values['street']);
-		$address->setHouseNumber($values['houseNumber']);
-		$address->setZipCode($values['zipCode']);
-		$address->setCity($values['city']);
-		$address->setState($stateEntity);
-		
-		$this->addressRepository->update($address);
+//		$address = $this->addressRepository->get(['user' => $userEntity->id]);
+//		$stateEntity = $this->stateRepository->get(['id' => $values['state']]);
+//		
+//		$address->setTitle($values['street'] . ' ' . $values['city']);
+//		$address->setStreet($values['street']);
+//		$address->setHouseNumber($values['houseNumber']);
+//		$address->setZipCode($values['zipCode']);
+//		$address->setCity($values['city']);
+//		$address->setState($stateEntity);
+//		
+//		$this->addressRepository->update($address);
 	}
 
 

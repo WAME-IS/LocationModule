@@ -1,8 +1,9 @@
 services:
-
 	# Repositories
 	- Wame\LocationModule\Repositories\AddressRepository
+	- Wame\LocationModule\Repositories\CityRepository
 	- Wame\LocationModule\Repositories\ContinentRepository
+	- Wame\LocationModule\Repositories\RegionRepository
 	- Wame\LocationModule\Repositories\StateRepository
 
 
