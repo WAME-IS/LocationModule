@@ -1,0 +1,4 @@
+services:
+	ComponentManager:
+		setup:
+			- addComponent(Wame\LocationModule\Vendor\Wame\ComponentModule\AddressComponent())
