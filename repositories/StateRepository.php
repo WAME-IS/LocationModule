@@ -33,13 +33,9 @@ class StateRepository extends TranslatableRepository
      */
     public function create($stateEntity)
     {
-        $create = $this->entityManager->persist($stateEntity);
+        $this->entityManager->persist($stateEntity);
 
         $this->entityManager->persist($stateEntity->langs);
-
-        if (!$create) {
-            throw new RepositoryException(_('State could not be created.'));
-        }
 
         return $stateEntity;
     }
