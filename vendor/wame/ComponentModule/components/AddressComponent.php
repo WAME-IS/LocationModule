@@ -3,7 +3,7 @@
 namespace Wame\LocationModule\Vendor\Wame\ComponentModule;
 
 use Nette\Application\LinkGenerator;
-use Wame\ComponentModule\Models\IComponent;
+use Wame\ComponentModule\Registers\IComponent;
 use Wame\MenuModule\Models\Item;
 use Wame\LocationModule\Components\IAddressControlFactory;
 
