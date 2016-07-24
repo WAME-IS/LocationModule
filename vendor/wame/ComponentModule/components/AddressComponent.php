@@ -82,11 +82,9 @@ class AddressComponent implements IComponent
 	}
 	
 	
-	public function createComponent($componentInPosition)
+	public function createComponent()
 	{
 		$control = $this->IAddressControlFactory->create();
-		$control->setComponentInPosition($componentInPosition);
-		
 		return $control;
 	}
 
