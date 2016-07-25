@@ -4,7 +4,7 @@ namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Wame\Core\Entities\Columns;
-use Wame\Core\Entities\TranslatableEntity;
+use Wame\LanguageModule\Entities\TranslatableEntity;
 use Wame\LocationModule\Entities\Columns\State;
 
 

@@ -8,7 +8,7 @@ use Nette\DI\Container;
 use Nette\Utils\Strings;
 use Nette\Security\User;
 use Wame\Core\Exception\RepositoryException;
-use Wame\Core\Repositories\TranslatableRepository;
+use Wame\LanguageModule\Repositories\TranslatableRepository;
 use Wame\LocationModule\Entities\CityEntity;
 use Wame\LocationModule\Entities\CityLangEntity;
 

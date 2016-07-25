@@ -7,7 +7,7 @@ use Kdyby\Doctrine\EntityManager;
 use Nette\DI\Container;
 use Nette\Security\User;
 use Wame\Core\Exception\RepositoryException;
-use Wame\Core\Repositories\TranslatableRepository;
+use Wame\LanguageModule\Repositories\TranslatableRepository;
 use Wame\LocationModule\Entities\StateEntity;
 
 class StateRepository extends TranslatableRepository
