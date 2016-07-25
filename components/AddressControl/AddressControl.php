@@ -32,8 +32,6 @@ class AddressControl extends BaseControl
         }
         
 		$this->template->address = $addressEntity;
-
-		$this->componentRender();
 	}
 
 }

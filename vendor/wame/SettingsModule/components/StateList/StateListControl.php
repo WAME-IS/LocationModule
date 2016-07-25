@@ -46,6 +46,5 @@ class StateListControl extends BaseControl
     public function render()
     {
         $this->template->states = $this->stateRepository->find(['status !=' => StateRepository::STATUS_REMOVE]);
-        $this->componentRender();
     }
 }

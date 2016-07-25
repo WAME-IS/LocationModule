@@ -31,6 +31,5 @@ class ContinentListControl extends BaseControl
     public function render()
     {
         $this->template->continents = $this->continentRepository->find(['status !=' => ContinentRepository::STATUS_REMOVED]);
-        $this->componentRender();
     }
 }
