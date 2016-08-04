@@ -61,9 +61,13 @@ class AddressFormContainer extends BaseFormContainer
 		if ($address) {
 			$form['street']->setDefaultValue($address->street);
 			$form['houseNumber']->setDefaultValue($address->houseNumber);
-			$form['zipCode']->setDefaultValue($address->zipCode);
-			$form['city']->setDefaultValue($address->city);
-			$form['state']->setDefaultValue($address->state->getId());
+            if ($address->city) {
+                $form['zipCode']->setDefaultValue($address->city->zipCode);
+                $form['city']->setDefaultValue($address->city);
+            }
+            if ($address->state) {
+                $form['state']->setDefaultValue($address->state->getId());
+            }
 		}
 	}
 

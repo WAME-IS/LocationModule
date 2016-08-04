@@ -10,7 +10,7 @@ use Wame\Core\Entities\Columns;
  * @ORM\Table(name="wame_continent")
  * @ORM\Entity
  */
-class ContinentEntity extends \Wame\Core\Entities\BaseEntity
+class ContinentEntity extends \Wame\LanguageModule\Entities\TranslatableEntity
 {
 	use Columns\Identifier;
 	use Columns\Status;
