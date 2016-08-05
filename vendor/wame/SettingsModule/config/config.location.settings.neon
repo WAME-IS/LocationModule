@@ -8,14 +8,14 @@ services:
 
 
 	ContinentSettings:
-		class: Wame\LocationModule\Vendor\Wame\SettingsModule\Models\Continent
+		class: Wame\LocationModule\Vendor\Wame\SettingsModule\Registers\Continent
 
 
 	StateSettings:
-		class: Wame\LocationModule\Vendor\Wame\SettingsModule\Models\State
+		class: Wame\LocationModule\Vendor\Wame\SettingsModule\Registers\State
 
 
-	SettingsManager:
+	SettingsGroupRegister:
 		setup:
-			- addType(@ContinentSettings, 'Continent')
-			- addType(@StateSettings, 'State')
+			- add(@ContinentSettings, 'Continent')
+			- add(@StateSettings, 'State')

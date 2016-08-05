@@ -1,12 +1,12 @@
 <?php 
 
-namespace Wame\LocationModule\Vendor\Wame\SettingsModule\Models;
+namespace Wame\LocationModule\Vendor\Wame\SettingsModule\Registers;
 
-use Wame\SettingsModule\Models\SettingsType;
+use Wame\SettingsModule\Registers\Types\SettingsGroup;
 use Wame\LocationModule\Vendor\Wame\SettingsModule\Components\IContinentListControlFactory;
 
 
-class Continent extends SettingsType
+class Continent extends SettingsGroup
 {
 	/** @var IContinentListControlFactory */
 	private $IContinentListControlFactory;
