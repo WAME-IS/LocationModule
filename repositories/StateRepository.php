@@ -2,26 +2,21 @@
 
 namespace Wame\LocationModule\Repositories;
 
-use h4kuna\Gettext\GettextSetup;
-use Kdyby\Doctrine\EntityManager;
-use Nette\DI\Container;
-use Nette\Security\User;
 use Wame\Core\Exception\RepositoryException;
 use Wame\LanguageModule\Repositories\TranslatableRepository;
 use Wame\LocationModule\Entities\StateEntity;
+use Wame\LocationModule\Entities\StateLangEntity;
 
 class StateRepository extends TranslatableRepository
 {
-
     const STATUS_REMOVE = 0;
     const STATUS_ENABLED = 1;
     const STATUS_DISABLED = 2;
 
-    public function __construct(
-    Container $container, EntityManager $entityManager, GettextSetup $translator, User $user
-    )
+    
+    public function __construct()
     {
-        parent::__construct($container, $entityManager, $translator, $user, StateEntity::class);
+        parent::__construct(StateEntity::class, StateLangEntity::class);
     }
 
     /**
@@ -34,7 +29,6 @@ class StateRepository extends TranslatableRepository
     public function create($stateEntity)
     {
         $this->entityManager->persist($stateEntity);
-
         $this->entityManager->persist($stateEntity->langs);
 
         return $stateEntity;
@@ -81,4 +75,5 @@ class StateRepository extends TranslatableRepository
 
         return $return;
     }
+    
 }

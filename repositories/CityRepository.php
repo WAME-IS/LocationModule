@@ -2,16 +2,11 @@
 
 namespace Wame\LocationModule\Repositories;
 
-use h4kuna\Gettext\GettextSetup;
-use Kdyby\Doctrine\EntityManager;
-use Nette\DI\Container;
 use Nette\Utils\Strings;
-use Nette\Security\User;
 use Wame\Core\Exception\RepositoryException;
 use Wame\LanguageModule\Repositories\TranslatableRepository;
 use Wame\LocationModule\Entities\CityEntity;
 use Wame\LocationModule\Entities\CityLangEntity;
-
 
 class CityRepository extends TranslatableRepository
 {
@@ -20,13 +15,9 @@ class CityRepository extends TranslatableRepository
     const STATUS_DISABLED = 2;
 
     
-    public function __construct(
-        Container $container, 
-        EntityManager $entityManager, 
-        GettextSetup $translator, 
-        User $user
-    ) {
-        parent::__construct($container, $entityManager, $translator, $user, CityEntity::class);
+    public function __construct()
+    {
+        parent::__construct(CityEntity::class, CityLangEntity::class);
     }
 
     

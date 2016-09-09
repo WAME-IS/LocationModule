@@ -1,38 +1,52 @@
 services:
-	# Repositories
-	- Wame\LocationModule\Repositories\AddressRepository
-	- Wame\LocationModule\Repositories\CityRepository
-	- Wame\LocationModule\Repositories\ContinentRepository
-	- Wame\LocationModule\Repositories\RegionRepository
-	- Wame\LocationModule\Repositories\StateRepository
+    # Repositories
+    AddressRepository:
+        class: Wame\LocationModule\Repositories\AddressRepository
+        inject: yes
+
+    CityRepository:
+        class: Wame\LocationModule\Repositories\CityRepository
+        inject: yes
+
+    ContinentRepository:
+        class: Wame\LocationModule\Repositories\ContinentRepository
+        inject: yes
+
+    RegionRepository:
+        class: Wame\LocationModule\Repositories\RegionRepository
+        inject: yes
+
+    StateRepository:
+        class: Wame\LocationModule\Repositories\StateRepository
+        inject: yes
 
 
-	# Events
-	- {class: Wame\LocationModule\Events\UserModuleListener, tags: [run]}
+    # Events
+    - {class: Wame\LocationModule\Events\UserModuleListener, tags: [run]}
 
 
-	# Factories
-	- Wame\LocationModule\Components\IAddressControlFactory
-	- Wame\LocationModule\Forms\AddressComponentForm
-	- Wame\LocationModule\Forms\IAddressFormContainerFactory
+    # Factories
+    - Wame\LocationModule\Components\IAddressControlFactory
+    - Wame\LocationModule\Forms\AddressComponentForm
+    - Wame\LocationModule\Forms\IAddressFormContainerFactory
 
 
-	# Sign up form
-	SignUpForm:
-		setup:
-			- addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
+    # Sign up form
+    SignUpForm:
+        setup:
+            - addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
 
-	# Create user form in administration
-	CreateUserForm:
-		setup:
-			- addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
+    # Create user form in administration
+    CreateUserForm:
+        setup:
+            - addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
 
-	# Update user form in administration
-	EditUserForm:
-		setup:
-			- addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
+    # Update user form in administration
+    EditUserForm:
+        setup:
+            - addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
 
 
 doctrine:
-	metadata:
-		Wame\LocationModule\Entities: %appDir%/../vendor/wame/LocationModule/entities
+    metadata:
+        Wame\LocationModule\Entities: %appDir%/../vendor/wame/LocationModule/entities

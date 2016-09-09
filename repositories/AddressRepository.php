@@ -5,7 +5,6 @@ namespace Wame\LocationModule\Repositories;
 use Wame\Core\Repositories\BaseRepository;
 use Wame\LocationModule\Entities\AddressEntity;
 
-
 class AddressRepository extends BaseRepository
 {
 	const STATUS_REMOVE = 0;
@@ -22,15 +21,11 @@ class AddressRepository extends BaseRepository
     
 
     public function __construct(
-        \Nette\DI\Container $container, 
-        \Kdyby\Doctrine\EntityManager $entityManager, 
-        \h4kuna\Gettext\GettextSetup $translator, 
-        \Nette\Security\User $user,
         CityRepository $cityRepository,
         RegionRepository $regionRepository,
         StateRepository $stateRepository
     ) {
-		parent::__construct($container, $entityManager, $translator, $user, AddressEntity::class);
+		parent::__construct(AddressEntity::class);
 
         $this->cityRepository = $cityRepository;
         $this->regionRepository = $regionRepository;
