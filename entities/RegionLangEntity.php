@@ -3,15 +3,14 @@
 namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use Wame\Core\Entities\BaseEntity;
+use Wame\Core\Entities\BaseLangEntity;
 use Wame\Core\Entities\Columns;
-
 
 /**
  * @ORM\Table(name="wame_region_lang")
  * @ORM\Entity
  */
-class RegionLangEntity extends BaseEntity
+class RegionLangEntity extends BaseLangEntity
 {
 	use Columns\Identifier;
 	use Columns\Lang;
@@ -42,5 +41,12 @@ class RegionLangEntity extends BaseEntity
 		
 		return $this;
 	}
+    
+    
+    /** {@inheritDoc} */
+    public function setEntity($entity)
+    {
+        $this->region = $entity;
+    }
 
 }

@@ -4,12 +4,13 @@ namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Wame\Core\Entities\Columns;
+use Wame\Core\Entities\BaseLangEntity;
 
 /**
  * @ORM\Table(name="wame_state_lang")
  * @ORM\Entity
  */
-class StateLangEntity extends \Wame\Core\Entities\BaseEntity
+class StateLangEntity extends BaseLangEntity
 {
 	use Columns\Identifier;
 	use Columns\Lang;
@@ -56,5 +57,12 @@ class StateLangEntity extends \Wame\Core\Entities\BaseEntity
 		
 		return $this;
 	}
+    
+    
+    /** {@inheritDoc} */
+    public function setEntity($entity)
+    {
+        $this->state = $entity;
+    }
 
 }

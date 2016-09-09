@@ -3,7 +3,7 @@
 namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use Wame\Core\Entities\BaseEntity;
+use Wame\Core\Entities\BaseLangEntity;
 use Wame\Core\Entities\Columns;
 
 
@@ -11,7 +11,7 @@ use Wame\Core\Entities\Columns;
  * @ORM\Table(name="wame_city_lang")
  * @ORM\Entity
  */
-class CityLangEntity extends BaseEntity
+class CityLangEntity extends BaseLangEntity
 {
 	use Columns\Identifier;
 	use Columns\Lang;
@@ -42,5 +42,12 @@ class CityLangEntity extends BaseEntity
 		
 		return $this;
 	}
+    
+    
+    /** {@inheritDoc} */
+    public function setEntity($entity)
+    {
+        $this->city = $entity;
+    }
 
 }

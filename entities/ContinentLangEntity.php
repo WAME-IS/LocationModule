@@ -4,12 +4,13 @@ namespace Wame\LocationModule\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Wame\Core\Entities\Columns;
+use Wame\Core\Entities\BaseLangEntity;
 
 /**
  * @ORM\Table(name="wame_continent_lang")
  * @ORM\Entity
  */
-class ContinentLangEntity extends \Wame\Core\Entities\BaseEntity
+class ContinentLangEntity extends BaseLangEntity
 {
 	use Columns\Identifier;
 	use Columns\EditDate;
@@ -41,5 +42,12 @@ class ContinentLangEntity extends \Wame\Core\Entities\BaseEntity
 
 		return $this;
 	}
+    
+    
+    /** {@inheritDoc} */
+    public function setEntity($entity)
+    {
+        $this->continent = $entity;
+    }
 
 }
