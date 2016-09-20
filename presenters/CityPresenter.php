@@ -3,12 +3,12 @@
 namespace App\LocationModule\Presenters;
 
 use App\Core\Presenters\BasePresenter;
-use Wame\LocationModule\Repositories\AddressRepository;
+use Wame\LocationModule\Repositories\CityRepository;
 
 class CityPresenter extends BasePresenter
 {
-	/** @var AddressRepository @inject */
-	public $addressRepository;
+	/** @var CityRepository @inject */
+	public $cityRepository;
 
     
     /**

@@ -75,7 +75,8 @@ class CityRepository extends TranslatableRepository
      */
     public function createIfNotExists($values = [])
     {
-        $cityEntity = $this->get(['importId' => $values['importId']]);
+         \Tracy\Debugger::fireLog($values);
+        $cityEntity = $this->get(['importId' => $values['place_id']]);
         
         if ($cityEntity) {
             return $this->updateCity($cityEntity, $values);
@@ -93,7 +94,7 @@ class CityRepository extends TranslatableRepository
     public function createCity($values)
     {
         $cityEntity = new CityEntity();
-        $cityEntity->setImportId($values['importId']);
+        $cityEntity->setImportId($values['place_id']);
         $cityEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));
         $cityEntity->setEditUser($this->user->getEntity());
         $cityEntity->setStatus(self::STATUS_ENABLED);
@@ -154,8 +155,8 @@ class CityRepository extends TranslatableRepository
         
         $cityEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));     
         $cityEntity->setEditUser($this->user->getEntity());
-        $cityEntity->langs[$this->lang]->setTitle($values['title']);
-        $cityEntity->langs[$this->lang]->setSlug(Strings::webalize($values['title']));
+        $cityEntity->langs[$this->lang]->setTitle(isset($values['title']) ? $values['title'] : '');
+        $cityEntity->langs[$this->lang]->setSlug(Strings::webalize(isset($values['title']) ? $values['title'] : ''));
         
         return $this->update($cityEntity);
     }
