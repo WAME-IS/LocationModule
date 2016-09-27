@@ -21,7 +21,7 @@ class ContinentLangEntity extends BaseLangEntity
 
 	/**
      * @ORM\ManyToOne(targetEntity="ContinentEntity", inversedBy="langs")
-     * @ORM\JoinColumn(name="continent_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="continent_id", referencedColumnName="id", onDelete="SET NULL")
      */
 	protected $continent;
 
