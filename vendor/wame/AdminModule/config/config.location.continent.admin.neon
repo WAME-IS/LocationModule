@@ -1,14 +1,24 @@
 services:
-	PermissionObject:
-		setup:
-			- addResource('admin.continent')
-			- addResourceAction('admin.continent', 'view')
-			- allow('moderator', 'admin.continent', 'view')
-			- addResourceAction('admin.continent', 'edit')
-			- allow('moderator', 'admin.continent', 'edit')
+    PermissionObject:
+        setup:
+            - addResource('admin.continent')
+            - addResourceAction('admin.continent', 'view')
+            - allow('moderator', 'admin.continent', 'view')
+            - addResourceAction('admin.continent', 'edit')
+            - allow('moderator', 'admin.continent', 'edit')
 
 
-	ContinentForm:
-		class: Wame\LocationModule\Vendor\Wame\AdminModule\Forms\ContinentForm
-		setup:
-			- addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\Continent\TitleFormContainer(), 'TitleFormContainer')
+    ContinentForm:
+        class: Wame\LocationModule\Vendor\Wame\AdminModule\Forms\ContinentForm
+        setup:
+            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\Continent\TitleFormContainer(), 'TitleFormContainer')
+
+
+    ContinentGrid:
+            class: Wame\LocationModule\Vendor\Wame\AdminModule\Grids\ContinentGrid
+            setup:
+                - add(Wame\DataGridControl\Columns\Id(), null, {priority: 100})
+                - add(Wame\DataGridControl\Columns\Title(), null, {priority: 80})
+                - add(Wame\LocationModule\Vendor\Wame\AdminModule\Grids\Columns\Continent\Code(), null, {priority: 90})
+                - add(Wame\DataGridControl\Columns\Status(), null, {priority: 70})
+                - add(Wame\LocationModule\Vendor\Wame\AdminModule\Grids\Actions\Continent\EditModal(), null, {priority: 1})

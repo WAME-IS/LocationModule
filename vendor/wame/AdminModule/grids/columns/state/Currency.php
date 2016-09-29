@@ -12,7 +12,7 @@ class Currency extends BaseGridItem
     {
 		$grid->addColumnText('currency', _('Currency'))
                 ->setRenderer(function($state) {
-                    return $state->getCurrency()->getSymbol();
+                    return $state->getCurrency()->getCode();
                 });
 		
 		return $grid;
