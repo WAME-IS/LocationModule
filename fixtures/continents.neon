@@ -1,0 +1,73 @@
+Wame\ContinentModule\Entities\ContinentEntity:
+    continentAf:
+        code: 'af'
+        status: 1
+    continentAn:
+        code: 'an'
+        status: 1
+    continentAs:
+        code: 'as'
+        status: 1
+    continentAu:
+        code: 'au'
+        status: 1
+    continentEu:
+        code: 'eu'
+        status: 1
+    continentNa:
+        code: 'na'
+        status: 1
+    continentSa:
+        code: 'sa'
+        status: 1
+
+Wame\ContinentModule\Entities\ContinentLangEntity:
+    continentAf-sk:
+        continent: @continentAf
+        title: 'Afrika'
+        lang: 'sk'
+        editUser: @userAdmin
+        editDate: '<dateTime()>'
+        slug: 'afrika'
+    continentAn-sk:
+        continent: @continentAn
+        title: 'Antarktída'
+        lang: 'sk'
+        editUser: @userAdmin
+        editDate: '<dateTime()>'
+        slug: 'antarktida'
+    continentAs-sk:
+        continent: @continentAs
+        title: 'Ázia'
+        lang: 'sk'
+        editUser: @userAdmin
+        editDate: '<dateTime()>'
+        slug: 'azia'
+    continentAu-sk:
+        continent: @continentAu
+        title: 'Austrália a oceánia'
+        lang: 'sk'
+        editUser: @userAdmin
+        editDate: '<dateTime()>'
+        slug: 'australia-a-oceania'
+    continentEu-sk:
+        continent: @continentEu
+        title: 'Európa'
+        lang: 'sk'
+        editUser: @userAdmin
+        editDate: '<dateTime()>'
+        slug: 'europa'
+    continentNa-sk:
+        continent: @continentNa
+        title: 'Severná amerika'
+        lang: 'sk'
+        editUser: @userAdmin
+        editDate: '<dateTime()>'
+        slug: 'severna-amerika'
+    continentSa-sk:
+        continent: @continentSa
+        title: 'Južná amerika'
+        lang: 'sk'
+        editUser: @userAdmin
+        editDate: '<dateTime()>'
+        slug: 'juzna-amerika'
