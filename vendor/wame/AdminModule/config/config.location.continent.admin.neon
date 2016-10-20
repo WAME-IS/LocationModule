@@ -8,13 +8,19 @@ services:
             - allow('moderator', 'admin.continent', 'edit')
 
 
-    ContinentForm:
-        class: Wame\LocationModule\Vendor\Wame\AdminModule\Forms\ContinentForm
+    - Wame\LocationModule\Vendor\Wame\AdminModule\Forms\Continent\Containers\ITitleContainerFactory
+
+
+    Admin.ContinentFormBuilder:
+        class: Wame\DynamicObject\Forms\LangEntityFormBuilder
         setup:
-            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\Continent\TitleFormContainer(), 'TitleFormContainer')
+            - setRepository(@ContinentRepository)
+            - redirectTo('Continent:', { 'id' : null })
+            - add(@Wame\LocationModule\Vendor\Wame\AdminModule\Forms\Continent\Containers\ITitleContainerFactory, 'TitleContainer', {priority: 100})
+            - add(@Wame\DynamicObject\Forms\Containers\ISubmitContainerFactory, 'SubmitContainer', {priority: 10})
 
 
-    ContinentGrid:
+    Admin.ContinentGrid:
             class: Wame\LocationModule\Vendor\Wame\AdminModule\Grids\ContinentGrid
             setup:
                 - add(Wame\DataGridControl\Columns\Id(), null, {priority: 100})

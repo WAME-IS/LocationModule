@@ -3,9 +3,10 @@ services:
         setup:
             - setService(Wame\LocationModule\Vendor\Wame\MenuModule\Components\MenuControl\AdminMenu\AdminSettingsMenuItem())
 
-    MenuManager:
-        setup:
-            - addMenuItemType(Wame\FileModule\Vendor\Wame\MenuModule\Components\MenuManager\Forms\UploadImageMenuItem(), 'uploadImage')
-
-
-    - {class: Wame\FileModule\Vendor\Wame\MenuModule\Components\MenuManager\Events\UploadImageMenuItemListener, tags: [run]}
+# Todo: toto zrejme netreba
+#    MenuManager:
+#        setup:
+#            - addMenuItemType(Wame\FileModule\Vendor\Wame\MenuModule\Components\MenuManager\Forms\UploadImageMenuItem(), 'uploadImage')
+#
+#
+#    - {class: Wame\FileModule\Vendor\Wame\MenuModule\Components\MenuManager\Events\UploadImageMenuItemListener, tags: [run]}

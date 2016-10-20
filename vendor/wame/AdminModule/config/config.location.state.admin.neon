@@ -12,20 +12,33 @@ services:
             - allow('admin', 'admin.state', 'delete')
 
 
-    StateForm:
-        class: Wame\LocationModule\Vendor\Wame\AdminModule\Forms\StateForm
+    - Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\IContinentContainerFactory
+    - Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\ITitleContainerFactory
+    - Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\ICodeContainerFactory
+    - Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\IIsoContainerFactory
+    - Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\IIsoNumericContainerFactory
+    - Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\IPhonePrefixContainerFactory
+    - Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\ITldContainerFactory
+    - Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\ICapitalCityContainerFactory
+
+
+    Admin.StateFormBuilder:
+        class: Wame\DynamicObject\Forms\LangEntityFormBuilder
         setup:
-            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\ContinentFormContainer(), 'ContinentFormContainer')
-            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\TitleFormContainer(), 'TitleFormContainer')
-            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\CodeFormContainer(), 'CodeFormContainer')
-            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\IsoFormContainer(), 'IsoFormContainer')
-            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\IsoNumericFormContainer(), 'IsoNumericFormContainer')
-            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\PhonePrefixFormContainer(), 'PhonePrefixFormContainer')
-            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\TldFormContainer(), 'TldFormContainer')
-            - addFormContainer(Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\CapitalCityFormContainer(), 'CapitalCityFormContainer')
+            - setRepository(@StateRepository)
+            - redirectTo('State:', { 'id' : null })
+            - add(@Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\IContinentContainerFactory, 'ContinentContainer', {priority: 90})
+            - add(@Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\ITitleContainerFactory, 'TitleContainer', {priority: 80})
+            - add(@Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\ICodeContainerFactory, 'CodeContainer', {priority: 70})
+            - add(@Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\IIsoContainerFactory, 'IsoContainer', {priority: 60})
+            - add(@Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\IIsoNumericContainerFactory, 'IsoNumericContainer', {priority: 50})
+            - add(@Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\IPhonePrefixContainerFactory, 'PhonePrefixContainer', {priority: 40})
+            - add(@Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\ITldContainerFactory, 'TldContainer', {priority: 30})
+            - add(@Wame\LocationModule\Vendor\Wame\AdminModule\Forms\State\Containers\ICapitalCityContainerFactory, 'CapitalCityContainer', {priority: 20})
+            - add(@Wame\DynamicObject\Forms\Containers\ISubmitContainerFactory, 'SubmitContainer', {priority: 10})
 
 
-    StateGrid:
+    Admin.StateGrid:
             class: Wame\LocationModule\Vendor\Wame\AdminModule\Grids\StateGrid
             setup:
                 - add(Wame\DataGridControl\Columns\Id(), null, {priority: 100})

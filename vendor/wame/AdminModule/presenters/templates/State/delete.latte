@@ -1,15 +1,5 @@
 {block content}
-	<div class="page-header">
-		<h1>
-			{$siteTitle}
-			<small>
-				<span class="fa fa-angle-right"></span>
-				{$stateEntity->langs[$lang]->title}
-			</small>
-		</h1>
-	</div>
+	<p>{_'Do you really want to delete %s state?', $stateEntity->getTitle()}</p>
 	
-	<p>{_'Do you really want to delete this state?'}</p>
-	
-	<a class="btn btn-danger" n:href="Delete!">{_'Delete'}</a>
-	<a class="btn btn-default" n:href=":Admin:Settings:, 'id' => 'State'">{_'Cancel'}</a>
+	<a class="btn btn-danger" n:href="Delete!" data-disabled="click">{_'Delete'}</a>
+	<a class="btn btn-default" n:href=":Admin:Settings:, 'id' => 'State'" data-dismiss="modal">{_'Cancel'}</a>
