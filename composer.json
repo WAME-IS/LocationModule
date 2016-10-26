@@ -11,7 +11,9 @@
     ],
     "require": {
         "wame/Core": "*",
-        "wame/SettingsModule": "*"
+        "wame/SettingsModule": "*",
+        "wame/ComponentModule": "*",
+        "wame/ChameleonComponents": "*"
     },
     "autoload": {
         "classmap": [
