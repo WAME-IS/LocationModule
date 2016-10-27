@@ -5,7 +5,7 @@ namespace Wame\LocationModule\Entities\Columns;
 trait City
 {
     /**
-	 * @ORM\ManyToOne(targetEntity="\Wame\LocationModule\Entities\CityEntity")
+	 * @ORM\ManyToOne(targetEntity="\Wame\LocationModule\Entities\CityEntity", cascade={"persist"})
 	 * @ORM\JoinColumn(name="city_id", referencedColumnName="id", nullable=true)
 	 */
 	protected $city;

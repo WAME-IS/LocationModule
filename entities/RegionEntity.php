@@ -23,7 +23,7 @@ class RegionEntity extends TranslatableEntity
 
     
     /**
-     * @ORM\OneToMany(targetEntity="RegionLangEntity", mappedBy="region")
+     * @ORM\OneToMany(targetEntity="RegionLangEntity", mappedBy="region", cascade={"persist"})
      */
     protected $langs;
     

@@ -28,7 +28,7 @@ class CityEntity extends TranslatableEntity
 
     
     /**
-     * @ORM\OneToMany(targetEntity="CityLangEntity", mappedBy="city")
+     * @ORM\OneToMany(targetEntity="CityLangEntity", mappedBy="city", cascade={"persist"})
      */
     protected $langs;
 

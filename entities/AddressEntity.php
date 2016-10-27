@@ -17,7 +17,7 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	use Columns\Status;
 	use Columns\Title;
 	use Columns\Token;
-	use Columns\User;
+//	use Columns\User;
 	use City;
 	use State;
 
@@ -37,7 +37,7 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
     protected $main = false;
 	
 	
-	/** get ***************************************************************/
+	/** get *******************************************************************/
 	
 	public function getStreet()
 	{
@@ -55,21 +55,27 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	}
 	
 	
-	/** set ***************************************************************/
+	/** set *******************************************************************/
 	
 	public function setStreet($street)
 	{
 		$this->street = $street;
+        
+        return $this;
 	}
 	
 	public function setHouseNumber($houseNumber)
 	{
 		$this->houseNumber = $houseNumber;
+        
+        return $this;
 	}
 	
 	public function setMain($main)
 	{
 		$this->main = $main;
+        
+        return $this;
 	}
 	
 }
