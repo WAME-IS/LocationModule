@@ -60,43 +60,22 @@ class ToCityRelation implements IRelation
         $longitude = $status->get('longitude');
         $radius = $status->get('radius');
         
-//        $tag = $to ? $to->getControl()->getStatus()->get($this->className) : null;
+//        $city = $to ? $to->getControl()->getStatus()->get($this->className) : null;
         $mainAlias = $qb->getAllAliases()[0];
         
         $qb->innerJoin(SiteItemEntity::class, 'siteitem', Join::WITH, "siteitem.value = $mainAlias.id");
-        
         $qb->innerJoin(SiteEntity::class, 'site', Join::WITH, "siteitem.site = site.id");
         $qb->innerJoin(CompanyEntity::class, 'company', Join::WITH, "site.company = company.id");
         $qb->innerJoin(AddressEntity::class, 'address', Join::WITH, "company.address = address.id");
         $qb->innerJoin(CityEntity::class, $relationAlias, Join::WITH, "address.city = $relationAlias.id");
-        
-//        $qb->andWhere('site.id = :cityId');
-//        $qb->setParameter('cityId', 1);
-        $qb->addSelect("(6371 * acos( cos( radians($latitude) ) * cos( radians( $relationAlias.latitude ) ) * cos( radians( $relationAlias.longitude ) - radians($longitude) ) + sin( radians($latitude) ) * sin( radians( $relationAlias.latitude ) ) ) ) AS distance");
-        $qb->having("distance < $radius");
-        $qb->orderBy("distance");
-        
-//        $qb->andWhere("$relationAlias.type = ")
-//        
-//        print_r($qb->getQuery()->getDQL());
-//        
-//        \Tracy\Debugger::barDump($qb->getQuery()->getDQL(), null, [\Tracy\Dumper::TRUNCATE => 0]);
-        
-        
-//        $qb->andWhere($relationAlias . '.item_id = ' . $mainAlias . '.id');
-        
-        
-        
-        
+
+        $qb->andWhere("(6371 * acos( cos( radians($latitude) ) * cos( radians( $relationAlias.latitude ) ) * cos( radians( $relationAlias.longitude ) - radians($longitude) ) + sin( radians($latitude) ) * sin( radians( $relationAlias.latitude ) ) ) ) < :radius");
+        $qb->setParameter('radius', $radius);
         
         $qb->andWhere('siteitem.type = :type')->setParameter('type', $this->type);
         
-        
-        
-        
-        
-//        if ($tag) {
-//            $qb->andWhere($relationAlias . '.tag = :tag')->setParameter('tag', $tag);
+//        if ($city) {
+//            $qb->andWhere($relationAlias . '.city = :city')->setParameter('city', $city);
 //        }
     }
 
