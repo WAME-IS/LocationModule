@@ -52,7 +52,7 @@ class UserModuleListener extends Object
 //		}
         
         $address = new AddressEntity();
-        $address->setUser($userEntity);
+//        $address->setUser($userEntity);
         $address->setTitle($userEntity->getNick() . ' ' . _('address'));
         $address->setMain(1);
 		$address->setStatus(AddressRepository::STATUS_ACTIVE);
