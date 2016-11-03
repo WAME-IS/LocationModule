@@ -53,8 +53,6 @@ class FromCityRelation implements IRelation
      */
     public function process(QueryBuilder $qb, $from, $to, $relationAlias)
     {
-        \Tracy\Debugger::barDump('xxx', "FromCityRelation");
-        
         $item = $to->getControl()->getStatus()->get($this->className);
         $mainAlias = $qb->getAllAliases()[0];
 
