@@ -20,6 +20,7 @@ class IsoNumericContainer extends BaseContainer
     public function configure()
     {
         $this->addText('isoNumeric', _('ISO numeric code'))
+                ->setRequired(false)
 				->addRule(Form::INTEGER, _('Must be a number'), '.*[0-9].*');
     }
 
