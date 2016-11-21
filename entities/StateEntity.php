@@ -23,13 +23,13 @@ class StateEntity extends TranslatableEntity
     use Currency;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ContinentEntity")
+     * @ORM\ManyToOne(targetEntity="ContinentEntity", cascade={"persist"})
      * @ORM\JoinColumn(name="continent_id", referencedColumnName="id", nullable=false)
      */
     protected $continent;
 
     /**
-     * @ORM\OneToMany(targetEntity="StateLangEntity", mappedBy="state")
+     * @ORM\OneToMany(targetEntity="StateLangEntity", mappedBy="state", cascade={"persist"})
      */
     protected $langs;
 

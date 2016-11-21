@@ -33,7 +33,7 @@ class CityEntity extends TranslatableEntity
     protected $langs;
 
     /**
-     * @ORM\ManyToOne(targetEntity="RegionEntity")
+     * @ORM\ManyToOne(targetEntity="RegionEntity", cascade={"persist"})
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id", nullable=true)
      */
     protected $region;
