@@ -24,9 +24,10 @@ class ContinentContainer extends BaseContainer
 
 
    	public function __construct(
+        \Nette\DI\Container $container,
 		ContinentRepository $continentRepository
 	) {
-		parent::__construct();
+		parent::__construct($container);
 
 		$this->continentRepository = $continentRepository;
 		$this->continentList = $continentRepository->getContinentList();
