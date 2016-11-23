@@ -1,95 +1,21 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: LocationModule\n"
+"Project-Id-Version: LocationModule.AdminModule\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2016-11-21T15:46:29+01:00\n"
-"PO-Revision-Date: 2016-11-21T15:46:29+01:00\n"
+"POT-Creation-Date: 2016-11-21T15:46:30+01:00\n"
+"PO-Revision-Date: 2016-11-21T15:46:30+01:00\n"
 "Language: en\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: gettext;__;ngettext;n__;pgettext;p__;dgettext;d__;dpgettext;dp__;npgettext;np__;dnpgettext;dnp__;noop;noop__;_\n"
-"X-Poedit-Basepath: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule\n"
+"X-Poedit-Basepath: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/vendor/wame/AdminModule\n"
 "X-Poedit-SearchPath-0: .\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Domain: LocationModule\n"
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/events/UserModuleListener.php:56
-msgid "address"
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/forms/address/AddressFormContainer.php:41
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/vendor/wame/ComponentModule/components/AddressComponent.php:57
-msgid "Address"
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/forms/address/AddressFormContainer.php:43
-msgid "Street"
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/forms/address/AddressFormContainer.php:45
-msgid "House number"
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/forms/address/AddressFormContainer.php:47
-msgid "Zip code"
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/forms/address/AddressFormContainer.php:49
-msgid "City"
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/forms/address/AddressFormContainer.php:51
-msgid "State"
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/presenters/AddressPresenter.php:28
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/presenters/CityPresenter.php:27
-msgid "City is successfully created."
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/repositories/AddressRepository.php:119
-msgid "This state is not supported."
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/repositories/CityRepository.php:38
-msgid "City could not be created."
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/repositories/RegionRepository.php:39
-msgid "Region could not be created."
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/locationmodule-components-addresscontrol-simple-latte.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/users-macmini2-weby-git-cms-wame-admin-4-0-0-vendor-wame-locationmodule-components-addresscontrol-simple-latte.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834257868ecf.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583426bf08e94.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834290e78709.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834298a87684.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583429e84f2da.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58342f7e2b5b4.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583431ee0bef2.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58343249279f1.php:14
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834332c0fb3c.php:14
-msgid "Locality"
-msgstr ""
-
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/locationmodule-forms-address-default-latte.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/users-macmini2-weby-git-cms-wame-admin-4-0-0-vendor-wame-locationmodule-forms-address-default-latte.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583425786f0c5.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583426bf0f515.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834290e7f029.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834298a8d245.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583429e855b7e.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58342f7e315e9.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583431ee122f2.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58343249393b2.php:12
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834332c150fc.php:12
-msgid "Contact details"
-msgstr ""
+"X-Domain: LocationModule.AdminModule\n"
 
 #: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/vendor/wame/AdminModule/forms/continent/title/TitleContainer.php:22
 #: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/vendor/wame/AdminModule/forms/state/containers/title/TitleContainer.php:22
@@ -202,7 +128,6 @@ msgid "This continent is removed."
 msgstr ""
 
 #: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/vendor/wame/AdminModule/presenters/ContinentPresenter.php:51
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/vendor/wame/MenuModule/components/MenuControl/AdminMenu/AdminSettingsMenuItem.php:54
 msgid "Continents"
 msgstr ""
 
@@ -225,7 +150,6 @@ msgid "State %s has been successfully deleted."
 msgstr ""
 
 #: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/vendor/wame/AdminModule/presenters/StatePresenter.php:101
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/vendor/wame/MenuModule/components/MenuControl/AdminMenu/AdminSettingsMenuItem.php:44
 msgid "States"
 msgstr ""
 
@@ -237,6 +161,32 @@ msgstr ""
 msgid "Deleting state"
 msgstr ""
 
-#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/vendor/wame/ComponentModule/components/AddressComponent.php:63
-msgid "Create address"
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834290eeefe2.php:37
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834298b240fe.php:37
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583429e906efd.php:37
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58342f7ea05cc.php:37
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583431ee8da12.php:37
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58343249c1a70.php:37
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834332c802b9.php:37
+msgid "Do you really want to delete %s state?"
+msgstr ""
+
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834290eeefe2.php:40
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834298b240fe.php:40
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583429e906efd.php:40
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58342f7ea05cc.php:40
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583431ee8da12.php:40
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58343249c1a70.php:40
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834332c802b9.php:40
+msgid "Delete"
+msgstr ""
+
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834290eeefe2.php:42
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834298b240fe.php:42
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583429e906efd.php:42
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58342f7ea05cc.php:42
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/583431ee8da12.php:42
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/58343249c1a70.php:42
+#: /Users/MacMini2/Weby/GIT/cms-wame-admin-4.0.0/vendor/wame/LocationModule/temp/latteCompiler/5834332c802b9.php:42
+msgid "Cancel"
 msgstr ""
