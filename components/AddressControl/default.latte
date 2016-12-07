@@ -1,5 +1,12 @@
 {if $address}
-    {$address->street} {$address->houseNumber}<br>
-    {$address->city->zipCode} {$address->city->title}<br>
-    {$address->state->title}
+    {$address->getStreet()} {$address->getHouseNumber()}
+    
+    {if $address->getCity()}
+        {$address->getCity()->getZipCode()}
+        {$address->getCity()->getTitle()}
+    {/if}
+    
+    {if $address->getState()}
+        {$address->getState()->getTitle()}
+    {/if}
 {/if}

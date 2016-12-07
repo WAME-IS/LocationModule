@@ -1,4 +1,8 @@
 services:
-	ComponentRegister:
-		setup:
-			- add(Wame\LocationModule\Vendor\Wame\ComponentModule\AddressComponent())
+    # Events
+    - {class: Wame\LocationModule\Vendor\Wame\ComponentModule\AddressComponentFormListener, tags: [run]}
+
+
+    ComponentRegister:
+        setup:
+            - add(Wame\LocationModule\Vendor\Wame\ComponentModule\AddressComponent())

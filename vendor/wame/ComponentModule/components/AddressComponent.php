@@ -11,19 +11,19 @@ use Wame\LocationModule\Components\IAddressControlFactory;
 interface IAddressComponentFactory
 {
 	/** @return AddressComponent */
-	public function create();	
+	public function create();
 }
 
 
 class AddressComponent implements IComponent
-{	
+{
 	/** @var LinkGenerator */
 	private $linkGenerator;
 
 	/** @var IAddressControlFactory */
 	private $IAddressControlFactory;
 
-	
+
 	public function __construct(
 		LinkGenerator $linkGenerator,
 		IAddressControlFactory $IAddressControlFactory
@@ -31,8 +31,8 @@ class AddressComponent implements IComponent
 		$this->linkGenerator = $linkGenerator;
 		$this->IAddressControlFactory = $IAddressControlFactory;
 	}
-	
-	
+
+
 	public function addItem()
 	{
 		$item = new Item();
@@ -41,47 +41,47 @@ class AddressComponent implements IComponent
 		$item->setDescription($this->getDescription());
 		$item->setLink($this->getLinkCreate());
 		$item->setIcon($this->getIcon());
-		
+
 		return $item->getItem();
 	}
-	
-    
+
+
 	public function getName()
 	{
 		return 'address';
 	}
-	
-	
+
+
 	public function getTitle()
 	{
 		return _('Address');
 	}
-	
-	
+
+
 	public function getDescription()
 	{
 		return _('Create address');
 	}
-	
-	
+
+
 	public function getIcon()
 	{
 		return 'fa fa-info';
 	}
-	
-	
+
+
 	public function getLinkCreate()
 	{
-		return $this->linkGenerator->link('Admin:Address:component');
+		return $this->linkGenerator->link('Admin:AddressComponent:create');
 	}
 
-	
+
 	public function getLinkDetail($componentEntity)
 	{
-		return $this->linkGenerator->link('Admin:Address:component', ['id' => $componentEntity->id]);
+		return $this->linkGenerator->link('Admin:AddressComponent:edit', ['id' => $componentEntity->id]);
 	}
-	
-	
+
+
 	public function createComponent()
 	{
 		$control = $this->IAddressControlFactory->create();
