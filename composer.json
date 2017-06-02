@@ -3,17 +3,22 @@
     "version": "0.0.1",
     "description": "CMS WAME admin",
     "homepage": "http://wame.sk/cms-wame-admin",
+    "minimum-stability": "dev",
     "authors": [
         {
-            "name": "Wame",
+            "name": "WAME s.r.o.",
             "homepage": "http://wame.sk"
         }
     ],
+    "repositories": [
+        { "type": "composer", "url": "http://packages.wame.sk" }
+    ],
+    "config": { "secure-http": false },
     "require": {
-        "wame/Core": "*",
-        "wame/SettingsModule": "*",
-        "wame/ComponentModule": "*",
-        "wame/ChameleonComponents": "*"
+        "wame/Core": "0.0.*",
+        "wame/SettingsModule": "0.0.*",
+        "wame/ComponentModule": "0.0.*",
+        "wame/ChameleonComponents": "0.0.*"
     },
     "autoload": {
         "classmap": [
