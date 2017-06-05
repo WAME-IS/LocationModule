@@ -18,7 +18,7 @@
         "wame/Core": "0.0.*",
         "wame/Geolocate": "0.0.*"
     },
-    "require-soft": {
+    "softRequire": {
         "wame/SettingsModule": "0.0.*",
         "wame/ComponentModule": "0.0.*",
         "wame/ChameleonComponents": "0.0.*"
