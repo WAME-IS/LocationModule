@@ -16,6 +16,9 @@
     "config": { "secure-http": false },
     "require": {
         "wame/Core": "0.0.*",
+        "wame/Geolocate": "0.0.*"
+    },
+    "require-soft": {
         "wame/SettingsModule": "0.0.*",
         "wame/ComponentModule": "0.0.*",
         "wame/ChameleonComponents": "0.0.*"
