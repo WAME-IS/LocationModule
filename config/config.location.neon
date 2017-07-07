@@ -35,7 +35,6 @@ services:
     LocationRegister:
         class: Wame\LocationModule\Registers\LocationRegister
 
-
     # Sign up form
     SignUpForm:
         setup:
