@@ -36,9 +36,9 @@ services:
         class: Wame\LocationModule\Registers\LocationRegister
 
     # Sign up form
-    SignUpForm:
-        setup:
-            - addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
+#    SignUpForm:
+#        setup:
+#            - addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
 
 #    # Create user form in administration
 #    CreateUserForm:
