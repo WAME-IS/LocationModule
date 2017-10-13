@@ -102,6 +102,7 @@ class CityRepository extends TranslatableRepository
         if (isset($values['place_id'])) $importId = $values['place_id'];
 
         $cityEntity = new CityEntity();
+        $cityEntity->setCurrentLang($this->lang);
         $cityEntity->setImportId($importId);
         $cityEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));
         $cityEntity->setEditUser($this->user->getEntity());

@@ -150,8 +150,8 @@ class AddressRepository extends BaseRepository
 
         // city
         if (isset($address['locality']) || isset($address['administrative_area_level_2'])) {
-            if (isset($address['locality'])) $title = $address['locality'];
             if (isset($address['administrative_area_level_2'])) $title = $address['administrative_area_level_2'];
+            if (isset($address['locality'])) $title = $address['locality'];
 
             if (isset($address['sublocality_level_1']) && $address['sublocality_level_1'] != $title) {
                 $title .= ' - ' . $address['sublocality_level_1'];
@@ -183,7 +183,12 @@ class AddressRepository extends BaseRepository
 
         if ($createAddress == false) return null;
 
-        $addressEntity->setTitle($this->getAddressTitle($addressEntity));
+        if (isset($values['formatted_address'])) {
+            $addressEntity->setTitle($values['formatted_address']);
+        } else {
+            $addressEntity->setTitle($addressEntity->getFullAddress());
+        }
+
 
         $entity = $this->create($addressEntity);
 
@@ -214,47 +219,47 @@ class AddressRepository extends BaseRepository
     }
 
 
-    /**
-     * Get address title
-     *
-     * @param AddressEntity|int $addressEntity
-     */
-    public function getAddressTitle($addressEntity)
-    {
-        if (is_numeric($addressEntity)) {
-            $addressEntity = $this->get(['id' => $addressEntity]);
-        }
-
-        $return = '';
-
-        // street
-        if ($addressEntity->getStreet()) {
-            $return .= $addressEntity->getStreet();
-
-            // house number
-            if ($addressEntity->getHouseNumber()) {
-                $return .= $addressEntity->getHouseNumber();
-            }
-
-            $return .= ', ';
-        }
-
-        // city
-        if ($addressEntity->getCity()) {
-            if ($addressEntity->getCity()->getZipCode()) {
-                $return .= $addressEntity->getCity()->getZipCode() . ' ';
-            }
-
-            $return .= $addressEntity->getCity()->getTitle() . ', ';
-        }
-
-        // state
-        if ($addressEntity->getState()) {
-            $return .= $addressEntity->getState()->getTitle() . ', ';
-        }
-
-        return substr($return, 0, -2);
-    }
+//    /**
+//     * Get address title
+//     *
+//     * @param AddressEntity|int $addressEntity
+//     */
+//    public function getAddressTitle($addressEntity)
+//    {
+//        if (is_numeric($addressEntity)) {
+//            $addressEntity = $this->get(['id' => $addressEntity]);
+//        }
+//
+//        $return = '';
+//
+//        // street
+//        if ($addressEntity->getStreet()) {
+//            $return .= $addressEntity->getStreet();
+//
+//            // house number
+//            if ($addressEntity->getHouseNumber()) {
+//                $return .= $addressEntity->getHouseNumber();
+//            }
+//
+//            $return .= ', ';
+//        }
+//
+//        // city
+//        if ($addressEntity->getCity()) {
+//            if ($addressEntity->getCity()->getZipCode()) {
+//                $return .= $addressEntity->getCity()->getZipCode() . ' ';
+//            }
+//
+//            $return .= $addressEntity->getCity()->getTitle() . ', ';
+//        }
+//
+//        // state
+//        if ($addressEntity->getState()) {
+//            $return .= $addressEntity->getState()->getTitle() . ', ';
+//        }
+//
+//        return substr($return, 0, -2);
+//    }
 
 
     /** api ************************************************************/
