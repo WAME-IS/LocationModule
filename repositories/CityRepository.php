@@ -75,8 +75,13 @@ class CityRepository extends TranslatableRepository
      */
     public function createIfNotExists($values = [])
     {
-         \Tracy\Debugger::fireLog($values);
-        $cityEntity = $this->get(['importId' => $values['place_id']]);
+        $cityEntity = null;
+        $importId = null;
+
+        if (isset($values['importId'])) $importId = $values['importId'];
+        if (isset($values['place_id'])) $importId = $values['place_id'];
+
+        if ($importId) $cityEntity = $this->get(['importId' => $importId]);
         
         if ($cityEntity) {
             return $this->updateCity($cityEntity, $values);
@@ -93,8 +98,11 @@ class CityRepository extends TranslatableRepository
      */
     public function createCity($values)
     {
+        if (isset($values['importId'])) $importId = $values['importId'];
+        if (isset($values['place_id'])) $importId = $values['place_id'];
+
         $cityEntity = new CityEntity();
-        $cityEntity->setImportId($values['place_id']);
+        $cityEntity->setImportId($importId);
         $cityEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));
         $cityEntity->setEditUser($this->user->getEntity());
         $cityEntity->setStatus(self::STATUS_ENABLED);
@@ -110,6 +118,8 @@ class CityRepository extends TranslatableRepository
         
         if (isset($values['zipCode'])) {
             $cityEntity->setZipCode($values['zipCode']);
+        } elseif (isset($values['postal_code'])) {
+            $cityEntity->setZipCode($values['postal_code']);
         }
         
         if (isset($values['region'])) {
@@ -151,6 +161,8 @@ class CityRepository extends TranslatableRepository
 
         if (isset($values['zipCode'])) {
             $cityEntity->setZipCode($values['zipCode']);
+        } elseif (isset($values['postal_code'])) {
+            $cityEntity->setZipCode($values['postal_code']);
         }
         
         $cityEntity->setEditDate(\Wame\Utils\Date::toDateTime('now'));     

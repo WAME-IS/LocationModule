@@ -17,7 +17,6 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	use Columns\Status;
 	use Columns\Title;
 	use Columns\Token;
-//	use Columns\User;
 	use City;
 	use State;
 
@@ -53,6 +52,39 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
 	{
 		return $this->main;
 	}
+
+	public function getFullAddress()
+    {
+        $return = '';
+
+        // street
+        if ($this->getStreet()) {
+            $return .= $this->getStreet();
+
+            // house number
+            if ($this->getHouseNumber()) {
+                $return .= $this->getHouseNumber();
+            }
+
+            $return .= ', ';
+        }
+
+        // city
+        if ($this->getCity()) {
+            if ($this->getCity()->getZipCode()) {
+                $return .= $this->getCity()->getZipCode() . ' ';
+            }
+
+            $return .= $this->getCity()->getTitle() . ', ';
+        }
+
+        // state
+        if ($this->getState()) {
+            $return .= $this->getState()->getTitle() . ', ';
+        }
+
+        return substr($return, 0, -2);
+    }
 	
 	
 	/** set *******************************************************************/
