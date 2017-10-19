@@ -59,7 +59,7 @@ class AddressPresenter extends AdminFormPresenter
         $this->addressItemRepository->remove(['id' => $this->getId()]);
 
         $this->flashMessage(_('Succesfully removed'), 'success');
-        $this->redirectUrl($this->getHttpRequest()->getHeader('referer'));
+        $this->redirectUrl($this->getRefererUrl());
 	}
 
 
