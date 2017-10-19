@@ -66,6 +66,27 @@ class CityEntity extends TranslatableEntity
         return $this->zipCode;
     }
 
+    public function getFullTitle()
+    {
+        $return = '';
+
+        // city
+        if ($this->getCity()) {
+            if ($this->getCity()->getZipCode()) {
+                $return .= $this->getCity()->getZipCode() . ' ';
+            }
+
+            $return .= $this->getCity()->getTitle() . ', ';
+        }
+
+        // state
+        if ($this->getState()) {
+            $return .= $this->getState()->getTitle() . ', ';
+        }
+
+        return substr($return, 0, -2);
+    }
+
     
     /** set *********************************************************** */
 

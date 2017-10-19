@@ -6,3 +6,4 @@ services:
     ComponentRegister:
         setup:
             - add(Wame\LocationModule\Vendor\Wame\ComponentModule\AddressComponent())
+            - add(Wame\LocationModule\Vendor\Wame\ComponentModule\AddressListComponent())

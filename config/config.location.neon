@@ -1,9 +1,4 @@
 services:
-    # Repositories
-    AddressRepository:
-        class: Wame\LocationModule\Repositories\AddressRepository
-        inject: yes
-
     CityRepository:
         class: Wame\LocationModule\Repositories\CityRepository
         inject: yes
@@ -25,30 +20,9 @@ services:
     - {class: Wame\LocationModule\Events\UserModuleListener, tags: [run]}
 
 
-    # Factories
-    - Wame\LocationModule\Components\IAddressControlFactory
-    - Wame\LocationModule\Forms\AddressComponentForm
-    - Wame\LocationModule\Forms\IAddressFormContainerFactory
-
-
     # Registers
     LocationRegister:
         class: Wame\LocationModule\Registers\LocationRegister
-
-    # Sign up form
-#    SignUpForm:
-#        setup:
-#            - addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
-
-#    # Create user form in administration
-#    CreateUserForm:
-#        setup:
-#            - addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
-#
-#    # Update user form in administration
-#    EditUserForm:
-#        setup:
-#            - addFormContainer(Wame\LocationModule\Forms\AddressFormContainer(), 'AddressFormContainer')
 
 
 doctrine:

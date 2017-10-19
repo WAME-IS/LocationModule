@@ -1,0 +1,33 @@
+services:
+    # Repositories
+    AddressRepository:
+        class: Wame\LocationModule\Repositories\AddressRepository
+        inject: yes
+
+    AddressItemRepository:
+        class: Wame\LocationModule\Repositories\AddressItemRepository
+        inject: yes
+
+
+    # Components
+    - Wame\LocationModule\Components\IAddressControlFactory
+    - Wame\LocationModule\Components\IAddressListControlFactory
+
+
+    # Form containers
+    - Wame\LocationModule\Forms\Containers\IStreetAndNumberContainerFactory
+    - Wame\LocationModule\Forms\Containers\ITypeContainerFactory
+
+
+    # Forms
+    - Wame\LocationModule\Forms\AddressComponentForm
+
+
+    AddressFormBuilder:
+        class: Wame\LocationModule\Forms\AddressFormBuilder
+        setup:
+            - setRepository(@AddressRepository)
+            - add(@Wame\DynamicObject\Forms\Containers\ITitleContainerFactory, 'TitleContainer', [priority: 90])
+            - add(@Wame\LocationModule\Forms\Containers\IStreetAndNumberContainerFactory, 'StreetAndNumberContainer', [priority: 80])
+            - add(@Wame\LocationModule\Forms\Containers\ITypeContainerFactory, 'TypeContainer')
+            - add(@Wame\DynamicObject\Forms\Containers\ISubmitContainerFactory, 'SubmitContainer', [priority: 0])

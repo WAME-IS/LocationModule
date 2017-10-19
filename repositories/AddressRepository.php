@@ -189,13 +189,7 @@ class AddressRepository extends BaseRepository
             $addressEntity->setTitle($addressEntity->getFullAddress());
         }
 
-
-        $entity = $this->create($addressEntity);
-
-		return [
-		    'id' => $entity->getId(),
-            'title' => $entity->getTitle()
-        ];
+        return $addressEntity;
     }
 
 
@@ -273,7 +267,14 @@ class AddressRepository extends BaseRepository
      */
     public function createAddress($address)
     {
-        return $this->createAddressFromGoogleMapApi($address);
+        $addressEntity = $this->createAddressFromGoogleMapApi($address);
+
+        $entity = $this->create($addressEntity);
+
+        return [
+            'id' => $entity->getId(),
+            'title' => $entity->getTitle()
+        ];
     }
 
 }

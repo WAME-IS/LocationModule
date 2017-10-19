@@ -1,0 +1,12 @@
+{block content}
+
+<div class="card-panel bg-warning" n:if="$entity->getMain() == true">
+    <i class="material-icons">warning</i>
+    {_'This address is marked as the main address.'}
+</div>
+
+<p>{_'Do you really want to remove %s?', $entity->getFullAddress()}</p>
+<p>{_'Everywhere this address has been used remains.'}</p>
+
+<a class="btn btn-danger" n:href="Delete!" data-disabled="click">{_'Delete'}</a>
+<a class="btn btn-default" n:href=":Admin:Homepage:, 'id' => null" data-dismiss="modal">{_'Cancel'}</a>

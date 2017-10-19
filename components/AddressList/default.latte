@@ -1,0 +1,59 @@
+{if count($list) == 0}
+    <div class="empty-block">
+        <p>{_'This company has no added any address.'}</p>
+
+        <a class="btn btn-success ajax-modal" href="{plink :$module:Address:create, 'id' => $value, 't' => $type}">
+            <i class="material-icons">add_circle_outline</i>
+            {_'Add first address'}
+        </a>
+    </div>
+{else}
+    <ul class="collection with-header z-depth-3">
+        <li class="collection-header">
+            <div class="row">
+                <div class="col-xs-10 col-sm-10 col-md-9 col-lg-10 valign-wrapper">
+                    <span class="valign">Address</span>
+                </div>
+
+                <div class="col-xs-2 col-sm-2 col-md-3 col-lg-2 border-left text-right">
+                    <a href="{plink :$module:Address:create, 'id' => $value, 't' => $type}" class="btn btn-link tooltipped ajax-modal" data-position="left" data-tooltip="{_'Add address'}">
+                        <span class="material-icons">add_circle_outline</span>
+                    </a>
+                </div>
+            </div>
+        </li>
+
+        <li class="collection-item" n:foreach="$list as $row">
+            {var $address = $row->getAddress()}
+
+            <div class="row">
+                <div class="col-xs-8">
+                    <a href="{plink :$module:Address:edit, 'id' => $row->getId()}" class="ajax-modal">
+                        <span class="title truncate">{$address->getTitle()}</span>
+                    </a>
+
+                    <div n:if="$address->getStreet()"><small>{$address->getStreet()}</small></div>
+                    <div n:if="$address->getCity() && $address->getCity()->getFullTitle()"><small>{$address->getCity()->getFullTitle()}</small></div>
+                </div>
+
+                <div class="col-xs-4">
+                    <div class="right-align">
+                        {if $main->getId() == $row->getId()}
+                            <span class="btn btn-icon btn-hover-warning tooltipped" data-position="left" data-tooltip="{_'Main address'}">
+                                <i class="material-icons">star</i>
+                            </span>
+                        {else}
+                            <a href="{link setMain!, 'id' => $row->getId()}" class="btn btn-icon btn-hover-warning tooltipped" data-position="left" data-tooltip="{_'Set as main address'}">
+                                <i class="material-icons">star_border</i>
+                            </a>
+                        {/if}
+
+                        <a href="{plink :$module:Address:delete, 'id' => $row->getId()}" class="btn btn-icon btn-hover-danger tooltipped ajax-modal" data-position="left" data-tooltip="{_'Remove address'}">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+{/if}

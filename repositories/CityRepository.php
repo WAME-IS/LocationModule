@@ -2,11 +2,17 @@
 
 namespace Wame\LocationModule\Repositories;
 
+use h4kuna\Gettext\GettextSetup;
+use Kdyby\Doctrine\EntityManager;
+use Nette\DI\Container;
+use Nette\Security\User;
 use Nette\Utils\Strings;
 use Wame\Core\Exception\RepositoryException;
+use Wame\Core\Registers\RepositoryRegister;
 use Wame\LanguageModule\Repositories\TranslatableRepository;
 use Wame\LocationModule\Entities\CityEntity;
 use Wame\LocationModule\Entities\CityLangEntity;
+
 
 class CityRepository extends TranslatableRepository
 {
@@ -14,13 +20,18 @@ class CityRepository extends TranslatableRepository
     const STATUS_ENABLED = 1;
     const STATUS_DISABLED = 2;
 
-    
-    public function __construct()
+    /** @var Container */
+    public $container;
+
+
+    public function __construct(Container $container)
     {
         parent::__construct(CityEntity::class, CityLangEntity::class);
+
+        $this->container = $container;
     }
 
-    
+
     /**
      * Create city
      * 
@@ -172,6 +183,32 @@ class CityRepository extends TranslatableRepository
         $cityEntity->langs[$this->lang]->setSlug(Strings::webalize(isset($values['title']) ? $values['title'] : ''));
         
         return $this->update($cityEntity);
+    }
+
+
+    /** api ************************************************************/
+
+    /**
+     * @api {post} /create-city Create city
+     *
+     * @param array $address
+     *
+     * @return array|null
+     */
+    public function apiCreateCity($address)
+    {
+        $addressRepository = $this->container->getByType(AddressRepository::class);
+
+        $addressEntity = $addressRepository->createAddressFromGoogleMapApi($address);
+
+        $this->entityManager->flush();
+
+        $cityEntity = $addressEntity->getCity();
+
+        return [
+            'id' => $cityEntity->getId(),
+            'title' => $cityEntity->getFullTitle()
+        ];
     }
 
 }
