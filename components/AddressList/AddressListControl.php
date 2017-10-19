@@ -44,8 +44,8 @@ class AddressListControl extends BaseControl
 
 	public function render()
 	{
-	    $entity = $this->getPresenter()->getEntity();
-        $type = $this->statusTypeRegister->getByEntityClass(get_class($entity))->getAlias();
+	    $entity = $this->getPresenter()->getRepository()->getEntityName();
+        $type = $this->statusTypeRegister->getByEntityClass($entity)->getAlias();
 	    $value = $this->getPresenter()->getId();
 
 		$this->template->list = $this->addressItemtRepository->find(['type' => $type, 'valueId' => $value]);
