@@ -37,6 +37,8 @@ class AddressFormBuilder extends EntityFormBuilder
 
     protected function postUpdate(BaseForm $form, array $values)
     {
+        $presenter = $form->getPresenter();
+
         $address = $form->getEntity();
         $id = $form->getPresenter()->getId();
         $type = $values['TypeContainer']['type'];
@@ -58,6 +60,11 @@ class AddressFormBuilder extends EntityFormBuilder
                 $address->setMain(true);
                 $entity->setAddress($address);
             }
+        }
+        \Tracy\Debugger::barDump($presenter->getRefererUrl());
+        if (!$presenter->isAjax()) {
+
+            $presenter->redirectUrl($presenter->getRefererUrl());
         }
     }
 

@@ -117,7 +117,12 @@ class AddressItemRepository extends BaseRepository
     public function setNextAsMain($id)
     {
         $addressItemEntity = $this->get(['id' => $id]);
-        $next = $this->get(['type' => $addressItemEntity->getType(), 'valueId' => $addressItemEntity->getValueId(), 'id !=' => $id]);
+
+        if (!$addressItemEntity) return;
+
+        $type = $addressItemEntity->getType();
+        $value = $addressItemEntity->getValueId();
+        $next = $this->get(['type' => $type, 'valueId' => $value, 'id !=' => $id]);
 
         if ($next) {
             $this->setMain($next->getId());
@@ -131,7 +136,7 @@ class AddressItemRepository extends BaseRepository
                 $entity->setAddress(null);
             }
 
-            $addressItemEntity->setMain(false);
+            $addressItemEntity->getAddress()->setMain(false);
         }
 
         $this->entityManager->flush();
