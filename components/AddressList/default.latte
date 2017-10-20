@@ -38,7 +38,7 @@
 
                 <div class="col-xs-4">
                     <div class="right-align">
-                        {if $main->getId() == $row->getId()}
+                        {if $main && $main->getId() == $row->getId()}
                             <span class="btn btn-icon btn-hover-warning tooltipped" data-position="left" data-tooltip="{_'Main address'}">
                                 <i class="material-icons">star</i>
                             </span>
