@@ -6,7 +6,6 @@ use Doctrine\ORM\Query\Expr\Join;
 use Wame\Core\Repositories\BaseRepository;
 use Wame\Core\Entities\BaseEntity;
 use Wame\LocationModule\Entities\AddressEntity;
-//use Wame\SiteModule\Repositories\SiteItemRepository;
 
 
 class AddressRepository extends BaseRepository
@@ -24,22 +23,17 @@ class AddressRepository extends BaseRepository
 	/** @var StateRepository */
     private $stateRepository;
 
-//	/** @var SiteItemRepository */
-//    private $siteItemRepository;
-
 
     public function __construct(
         CityRepository $cityRepository,
         RegionRepository $regionRepository,
-        StateRepository $stateRepository,
-//        SiteItemRepository $siteItemRepository
+        StateRepository $stateRepository
     ) {
 		parent::__construct(AddressEntity::class);
 
         $this->cityRepository = $cityRepository;
         $this->regionRepository = $regionRepository;
         $this->stateRepository = $stateRepository;
-//        $this->siteItemRepository = $siteItemRepository;
     }
 
 
