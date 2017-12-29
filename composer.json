@@ -16,12 +16,14 @@
     "config": { "secure-http": false },
     "require": {
         "wame/Core": ">=0.0.1",
+        "wame/CurrencyModule": ">=0.0.1",
         "wame/Geolocate": ">=0.0.1"
     },
     "softRequire": {
-        "wame/SettingsModule": ">=0.0.1",
+        "wame/AdminModule": ">=0.0.1",
         "wame/ComponentModule": ">=0.0.1",
-        "wame/ChameleonComponents": ">=0.0.1"
+        "wame/ChameleonComponents": ">=0.0.1",
+        "wame/MenuModule": ">=0.0.1"
     },
     "autoload": {
         "classmap": [
