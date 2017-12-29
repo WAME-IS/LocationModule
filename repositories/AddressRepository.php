@@ -6,7 +6,7 @@ use Doctrine\ORM\Query\Expr\Join;
 use Wame\Core\Repositories\BaseRepository;
 use Wame\Core\Entities\BaseEntity;
 use Wame\LocationModule\Entities\AddressEntity;
-use Wame\SiteModule\Repositories\SiteItemRepository;
+//use Wame\SiteModule\Repositories\SiteItemRepository;
 
 
 class AddressRepository extends BaseRepository
@@ -24,22 +24,22 @@ class AddressRepository extends BaseRepository
 	/** @var StateRepository */
     private $stateRepository;
 
-	/** @var SiteItemRepository */
-    private $siteItemRepository;
+//	/** @var SiteItemRepository */
+//    private $siteItemRepository;
 
 
     public function __construct(
         CityRepository $cityRepository,
         RegionRepository $regionRepository,
         StateRepository $stateRepository,
-        SiteItemRepository $siteItemRepository
+//        SiteItemRepository $siteItemRepository
     ) {
 		parent::__construct(AddressEntity::class);
 
         $this->cityRepository = $cityRepository;
         $this->regionRepository = $regionRepository;
         $this->stateRepository = $stateRepository;
-        $this->siteItemRepository = $siteItemRepository;
+//        $this->siteItemRepository = $siteItemRepository;
     }
 
 
@@ -193,24 +193,24 @@ class AddressRepository extends BaseRepository
     }
 
 
-    /**
-     * Get AddressEntity by other entity
-     *
-     * @param BaseEntity $entity
-     * @param string $type
-     */
-    public function getByEntity($entity, $type)
-    {
-        $qb = $this->siteItemRepository->createQueryBuilder('si');
-        $qb->select('a');
-        $qb->where($qb->expr()->eq('si.type', ':type'))->setParameter('type', $type);
-        $qb->andWhere($qb->expr()->eq('si.value', ':value'))->setParameter('value', $entity->getId());
-        $qb->leftJoin(\Wame\SiteModule\Entities\SiteEntity::class, 's', Join::WITH, 'si.site = s.id');
-        $qb->leftJoin(\Wame\UserModule\Entities\CompanyEntity::class, 'c', Join::WITH, 's.company = c.id');
-        $qb->leftJoin(AddressEntity::class, 'a', Join::WITH, 'c.address = a.id');
-
-        return $qb->getQuery()->getOneOrNullResult();
-    }
+//    /**
+//     * Get AddressEntity by other entity
+//     *
+//     * @param BaseEntity $entity
+//     * @param string $type
+//     */
+//    public function getByEntity($entity, $type)
+//    {
+//        $qb = $this->siteItemRepository->createQueryBuilder('si');
+//        $qb->select('a');
+//        $qb->where($qb->expr()->eq('si.type', ':type'))->setParameter('type', $type);
+//        $qb->andWhere($qb->expr()->eq('si.value', ':value'))->setParameter('value', $entity->getId());
+////        $qb->leftJoin(\Wame\SiteModule\Entities\SiteEntity::class, 's', Join::WITH, 'si.site = s.id');
+////        $qb->leftJoin(\Wame\UserModule\Entities\CompanyEntity::class, 'c', Join::WITH, 's.company = c.id');
+//        $qb->leftJoin(AddressEntity::class, 'a', Join::WITH, 'c.address = a.id');
+//
+//        return $qb->getQuery()->getOneOrNullResult();
+//    }
 
 
 //    /**

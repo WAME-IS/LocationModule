@@ -8,8 +8,6 @@ use Wame\ChameleonComponents\Definition\DataSpace;
 use Wame\ChameleonComponentsDoctrine\Registers\Types\IRelation;
 use Wame\Core\Entities\BaseEntity;
 use Wame\LocationModule\Entities\CityEntity;
-use Wame\SiteModule\Entities\SiteItemEntity;
-use Wame\SiteModule\Entities\SiteEntity;
 use Wame\UserModule\Entities\CompanyEntity;
 use Wame\LocationModule\Entities\AddressEntity;
 use Doctrine\ORM\Query\Expr\Join;

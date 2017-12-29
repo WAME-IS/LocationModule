@@ -1,6 +1,6 @@
-services:
-    - Wame\LocationModule\Vendor\Wame\ChameleonComponentsDoctrine\Loader\LocationRelationLoader
-
-    RelationsRegister:
-        setup:
-            - @Wame\LocationModule\Vendor\Wame\ChameleonComponentsDoctrine\Loader\LocationRelationLoader::initialize(@RelationsRegister)
+#services:
+#    - Wame\LocationModule\Vendor\Wame\ChameleonComponentsDoctrine\Loader\LocationRelationLoader
+#
+#    RelationsRegister:
+#        setup:
+#            - @Wame\LocationModule\Vendor\Wame\ChameleonComponentsDoctrine\Loader\LocationRelationLoader::initialize(@RelationsRegister)

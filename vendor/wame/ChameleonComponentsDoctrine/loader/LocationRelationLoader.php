@@ -26,10 +26,10 @@ class LocationRelationLoader
     
     public function initialize(RelationsRegister $relationsRegister)
     {
-        foreach ($this->statusTypeRegister as $statusType) {
-            $relationsRegister->add(new FromCityRelation($statusType->getAlias(), $statusType->getEntityName()));
-            $relationsRegister->add(new ToCityRelation($statusType->getAlias(), $statusType->getEntityName()));
-        }
+//        foreach ($this->statusTypeRegister as $statusType) {
+//            $relationsRegister->add(new FromCityRelation($statusType->getAlias(), $statusType->getEntityName()));
+//            $relationsRegister->add(new ToCityRelation($statusType->getAlias(), $statusType->getEntityName()));
+//        }
     }
     
 }

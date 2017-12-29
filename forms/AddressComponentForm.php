@@ -37,9 +37,9 @@ class AddressComponentForm extends FormFactory
 	
 	/**
 	 * Set component type
-	 * 
-	 * @param string $type
-     * @return \Wame\SiteModule\Forms\SiteComponentForm
+	 *
+     * @param string $type
+     * @return $this
      */
 	public function setType($type)
 	{
