@@ -1,5 +1,5 @@
 {
-    "name": "wameis/LocationModule",
+    "name": "wame/LocationModule",
     "version": "0.0.1",
     "description": "CMS WAME admin",
     "homepage": "http://wame.sk/cms-wame-admin",
@@ -15,15 +15,15 @@
     ],
     "config": { "secure-http": false },
     "require": {
-        "wameis/Core": ">=0.0.1",
-        "wameis/CurrencyModule": ">=0.0.1",
-        "wameis/Geolocate": ">=0.0.1"
+        "wame/Core": ">=0.0.1",
+        "wame/CurrencyModule": ">=0.0.1",
+        "wame/Geolocate": ">=0.0.1"
     },
     "softRequire": {
-        "wameis/AdminModule": ">=0.0.1",
-        "wameis/ComponentModule": ">=0.0.1",
-        "wameis/ChameleonComponents": ">=0.0.1",
-        "wameis/MenuModule": ">=0.0.1"
+        "wame/AdminModule": ">=0.0.1",
+        "wame/ComponentModule": ">=0.0.1",
+        "wame/ChameleonComponents": ">=0.0.1",
+        "wame/MenuModule": ">=0.0.1"
     },
     "autoload": {
         "classmap": [
