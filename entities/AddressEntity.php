@@ -75,12 +75,12 @@ class AddressEntity extends \Wame\Core\Entities\BaseEntity
                 $return .= $this->getCity()->getZipCode() . ' ';
             }
 
-            $return .= $this->getCity()->getTitle() . ', ';
+            $return .= $this->getCity()->title . ', ';
         }
 
         // state
         if ($this->getState()) {
-            $return .= $this->getState()->getTitle() . ', ';
+            $return .= $this->getState()->title . ', ';
         }
 
         return substr($return, 0, -2);
